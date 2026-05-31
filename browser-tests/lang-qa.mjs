@@ -25,6 +25,9 @@ const EN_TELLS = [
   // ch03
   "Green wins", "Layer order beats", "does not leak",
   "In scope", "Nested", "untouched", "no leaks",
+  // ch04
+  "Dashboard from named", "auto-fit gallery", "no media queries",
+  "Resize the window", "watch the columns", "drawn with words",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -39,6 +42,9 @@ const ES_TELLS = [
   // cap03
   "Gana el verde", "El orden de capa", "no se filtra",
   "En el scope", "Anidado", "sin fugas", "sin tocar",
+  // cap04
+  "Dashboard con áreas", "Galería auto-fit", "sin media queries",
+  "Cambia el ancho", "recolocarse", "dibujado con palabras",
 ];
 
 function walk(dir) {
