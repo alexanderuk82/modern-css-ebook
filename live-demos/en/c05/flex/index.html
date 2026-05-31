@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch 05 · Flexbox Revisited · Modern CSS 2026</title>
+<meta name="description" content="A responsive navigation that reflows on its own and an auto-stacking sidebar, both with no media queries. Demo for Chapter 5 of Modern CSS 2026.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --brand: oklch(48% 0.18 295);
+    --accent: oklch(72% 0.15 210);
+    --ink: light-dark(oklch(22% 0.02 290), oklch(95% 0.01 290));
+    --bg: light-dark(oklch(98% 0.01 290), oklch(18% 0.02 290));
+    --card: light-dark(oklch(100% 0 0), oklch(24% 0.02 290));
+    --line: light-dark(oklch(90% 0.01 290), oklch(36% 0.02 290));
+    --muted: light-dark(oklch(45% 0.02 290), oklch(72% 0.02 290));
+    --tint: color-mix(in oklch, var(--accent) 16%, var(--card));
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 60rem; margin-inline: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+  a { color: var(--accent); text-decoration: none; }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.3rem; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); margin-top: 0; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; padding: 0.15rem 0.55rem; border-radius: 999px;
+    border: 1px solid oklch(52% 0.13 165); color: oklch(52% 0.13 165);
+    margin-bottom: 1.4rem;
+  }
+  h2 { font-size: 1rem; margin: 1.6rem 0 0.3rem; }
+  .hint { font-size: 0.8rem; color: var(--muted); margin: 0 0 0.8rem; }
+
+  /* Demo 1: a nav that wraps on its own, no media queries. */
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    align-items: center;
+    border: 1px solid var(--line); border-radius: 0.8rem;
+    padding: 0.8rem 1rem;
+  }
+  .nav .logo { font-weight: 750; }
+  .nav a { color: var(--ink); font-size: 0.9rem; }
+  .nav .cta {
+    margin-inline-start: auto;
+    background: var(--brand); color: white;
+    padding: 0.45rem 0.9rem; border-radius: 0.5rem;
+    font-size: 0.85rem; font-weight: 650;
+  }
+
+  /* Demo 2: sidebar and content side by side, stacked when narrow. */
+  .layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.4rem;
+  }
+  .aside {
+    flex: 1 1 14rem;
+    background: var(--tint); border-radius: 0.8rem;
+    padding: 1.2rem; font-weight: 650;
+  }
+  .main {
+    flex: 999 1 20rem;
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 0.8rem; padding: 1.2rem;
+  }
+
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Flexbox <span class="grad">Revisited</span></h1>
+  <p class="lead">One dimension, done right. Chapter 5 of Modern CSS 2026.</p>
+  <span class="badge">BASELINE</span>
+
+  <h2>Responsive nav, no media queries</h2>
+  <p class="hint">Resize the window. The items wrap on their own.</p>
+  <nav class="nav">
+    <span class="logo">Acme</span>
+    <a href="#">Product</a>
+    <a href="#">Pricing</a>
+    <a href="#">Docs</a>
+    <a class="cta" href="#">Sign up</a>
+  </nav>
+
+  <h2>Sidebar that stacks on its own</h2>
+  <p class="hint">Side by side when there is room, stacked when narrow.</p>
+  <div class="layout">
+    <aside class="aside">Sidebar (flex 1 1 14rem)</aside>
+    <div class="main">Content (flex 999 1 20rem). The grow of 999
+      makes this take most of the width, until both no longer
+      fit and they wrap to full width each.</div>
+  </div>
+
+  <footer>
+    Part of <a href="../../">Modern CSS 2026 live demos</a>. Verify the support
+    state at <a href="https://baseline.web.dev">baseline.web.dev</a>.
+  </footer>
+</div>
+</body>
+</html>

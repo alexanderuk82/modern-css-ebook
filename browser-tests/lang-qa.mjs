@@ -28,6 +28,9 @@ const EN_TELLS = [
   // ch04
   "Dashboard from named", "auto-fit gallery", "no media queries",
   "Resize the window", "watch the columns", "drawn with words",
+  // ch05
+  "Responsive nav", "Sidebar that stacks", "Side by side when",
+  "Sign up", "wrap on their own", "One dimension",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -45,6 +48,9 @@ const ES_TELLS = [
   // cap04
   "Dashboard con áreas", "Galería auto-fit", "sin media queries",
   "Cambia el ancho", "recolocarse", "dibujado con palabras",
+  // cap05
+  "Nav responsive", "Barra lateral que se apila", "Crear cuenta",
+  "se envuelven solos", "una al lado de otra", "Una dimensión",
 ];
 
 function walk(dir) {
