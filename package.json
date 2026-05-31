@@ -1,0 +1,30 @@
+{
+  "name": "modern-css-ebook",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Companion code repo for the Modern CSS 2026 / CSS Moderno 2026 ebook by Alexander Burgos.",
+  "author": "Alexander Burgos <alexanderburgosuk82@gmail.com> (https://alexanderburgos.netlify.app/)",
+  "license": "MIT",
+  "homepage": "https://github.com/alexanderuk82/modern-css-ebook",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexanderuk82/modern-css-ebook.git"
+  },
+  "keywords": [
+    "css",
+    "modern-css",
+    "container-queries",
+    "anchor-positioning",
+    "view-transitions",
+    "if-function",
+    "tailwind",
+    "companion",
+    "ebook"
+  ],
+  "scripts": {
+    "scaffold": "python scripts/scaffold_chapters.py",
+    "check:voice": "python scripts/check_voice.py",
+    "check:width": "python scripts/check_code_width.py",
+    "test:browser": "npm --prefix browser-tests test"
+  }
+}

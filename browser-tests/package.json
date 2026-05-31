@@ -1,0 +1,14 @@
+{
+  "name": "modern-css-ebook-browser-tests",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Playwright tests that verify the CSS features in the book are still alive as browsers update.",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0"
+  }
+}

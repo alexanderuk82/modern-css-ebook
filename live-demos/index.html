@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modern CSS 2026 · Live demos</title>
+<meta name="description" content="Live demos for the book Modern CSS 2026 / CSS Moderno 2026 by Alexander Burgos. The destination for every QR code in the book.">
+<style>
+  /* This page eats its own dog food: OKLCH, light-dark, container queries,
+     :has(), logical properties, fluid type with clamp(). The book in one page. */
+  :root {
+    color-scheme: light dark;
+    --brand: oklch(48% 0.18 295);      /* purple */
+    --accent: oklch(72% 0.15 210);     /* cyan   */
+    --ink: light-dark(oklch(22% 0.02 290), oklch(95% 0.01 290));
+    --bg: light-dark(oklch(98% 0.01 290), oklch(18% 0.02 290));
+    --card: light-dark(oklch(100% 0 0), oklch(24% 0.02 290));
+    --line: light-dark(oklch(90% 0.01 290), oklch(34% 0.02 290));
+    --muted: light-dark(oklch(45% 0.02 290), oklch(72% 0.02 290));
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 64rem; margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2.5rem); }
+
+  header.hero {
+    padding-block: clamp(3rem, 9vw, 6rem) clamp(2rem, 5vw, 3.5rem);
+    background:
+      radial-gradient(120% 140% at 100% 0%, color-mix(in oklch, var(--accent) 22%, transparent), transparent 60%),
+      radial-gradient(120% 140% at 0% 0%, color-mix(in oklch, var(--brand) 28%, transparent), transparent 55%);
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand);
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--card);
+  }
+  h1 {
+    font-size: clamp(2.1rem, 6vw, 3.6rem);
+    line-height: 1.05;
+    margin: 1rem 0 0.6rem;
+    letter-spacing: -0.02em;
+  }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { font-size: clamp(1.05rem, 2.4vw, 1.3rem); color: var(--muted); max-width: 46rem; }
+
+  main { padding-block: clamp(2rem, 5vw, 3.5rem) 4rem; }
+  .note {
+    border: 1px solid var(--line);
+    background: color-mix(in oklch, var(--accent) 8%, var(--card));
+    border-radius: 0.9rem;
+    padding: 1rem 1.2rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.95rem;
+  }
+
+  .part-title {
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--brand);
+    margin: 2.4rem 0 0.9rem;
+  }
+
+  /* Container queries: the card grid adapts to the container, not the viewport. */
+  .grid { container-type: inline-size; }
+  .grid ul {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: 0.8rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  }
+  .card {
+    display: block;
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    padding: 1rem 1.1rem;
+    background: var(--card);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.18s ease, border-color 0.18s ease;
+  }
+  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .card .num { font-size: 0.78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .card .name { display: block; font-weight: 650; margin-top: 0.15rem; }
+  .tag {
+    display: inline-block; margin-top: 0.6rem;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em;
+    padding: 0.15rem 0.5rem; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--muted);
+  }
+  .tag.baseline { color: oklch(52% 0.13 165); border-color: currentColor; }
+  .tag.chrome   { color: oklch(60% 0.15 70);  border-color: currentColor; }
+  .tag.flag     { color: oklch(58% 0.2 25);   border-color: currentColor; }
+  /* :has() in action: a card linking to a real demo gets a soft accent ring. */
+  .card:has(.tag.ready) { outline: 2px solid color-mix(in oklch, var(--accent) 50%, transparent); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-block: 2rem 3rem;
+    color: var(--muted); font-size: 0.9rem;
+  }
+  footer a { font-weight: 600; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Live demos</span>
+    <h1><span class="grad">Modern CSS 2026</span><br>CSS Moderno 2026</h1>
+    <p class="lead">
+      The home for every QR code in the book. Each chapter sends you here to see
+      the CSS actually run, because a printed page cannot animate. Aqui es a
+      donde apunta cada QR del libro.
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="note">
+    This page is itself a demo. It is built with OKLCH color, <code>light-dark()</code>,
+    container queries and <code>:has()</code>, no framework and no build step.
+    View source to read it. Demos go live chapter by chapter as the book ships.
+  </p>
+
+  <div class="grid">
+    <p class="part-title">Part I · Reset mental</p>
+    <ul>
+      <li><a class="card" href="#"><span class="num">Ch 01</span><span class="name">The Shift You Missed</span><br><span class="tag">soon</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 02</span><span class="name">Custom Properties &amp; @property</span><br><span class="tag baseline">Baseline 2024</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 03</span><span class="name">Cascade, Layers, @scope</span><br><span class="tag baseline">Baseline 2025/26</span></a></li>
+    </ul>
+
+    <p class="part-title">Part II · Modern layout</p>
+    <ul>
+      <li><a class="card" href="#"><span class="num">Ch 04</span><span class="name">Grid in 2026</span><br><span class="tag baseline">Baseline</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 05</span><span class="name">Flexbox Revisited</span><br><span class="tag baseline">Baseline</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 06</span><span class="name">Container Queries</span><br><span class="tag baseline">Baseline 2025</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 07</span><span class="name">Subgrid &amp; Masonry</span><br><span class="tag flag">Behind flag</span></a></li>
+    </ul>
+
+    <p class="part-title">Part III · Selectors &amp; architecture</p>
+    <ul>
+      <li><a class="card" href="#"><span class="num">Ch 08</span><span class="name">:has() &amp; Relational Selectors</span><br><span class="tag baseline">Baseline 2024</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 09</span><span class="name">Native Nesting</span><br><span class="tag baseline">Baseline 2024/25</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 10</span><span class="name">Logical Properties</span><br><span class="tag baseline">Baseline</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 11</span><span class="name">Tree-Counting Functions</span><br><span class="tag chrome">Chrome only</span></a></li>
+    </ul>
+
+    <p class="part-title">Part IV · Color, type &amp; shape</p>
+    <ul>
+      <li><a class="card" href="#"><span class="num">Ch 12</span><span class="name">Color in 2026</span><br><span class="tag baseline">Baseline</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 13</span><span class="name">Modern Typography</span><br><span class="tag baseline">Baseline 2024/25</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 14</span><span class="name">Advanced Shapes</span><br><span class="tag flag">Mixed</span></a></li>
+    </ul>
+
+    <p class="part-title">Part V · Motion &amp; interaction</p>
+    <ul>
+      <li><a class="card" href="#"><span class="num">Ch 15</span><span class="name">Modern Transitions</span><br><span class="tag baseline">Baseline</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 16</span><span class="name">Scroll-Driven Animations</span><br><span class="tag baseline">Baseline 2026</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 17</span><span class="name">View Transitions</span><br><span class="tag baseline">Baseline 2025/26</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 18</span><span class="name">Anchor, Popovers, Commands</span><br><span class="tag baseline">Baseline 2025/26</span></a></li>
+    </ul>
+
+    <p class="part-title">Part VI · Stylable HTML</p>
+    <ul>
+      <li><a class="card" href="#"><span class="num">Ch 19</span><span class="name">Customizable Select</span><br><span class="tag chrome">Chrome 135+</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 20</span><span class="name">Typed attr()</span><br><span class="tag baseline">Baseline 2025</span></a></li>
+    </ul>
+
+    <p class="part-title">Part VII · Programmable CSS</p>
+    <ul>
+      <li><a class="card" href="#"><span class="num">Ch 21</span><span class="name">The if() Function</span><br><span class="tag chrome">Chrome 137+</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 22</span><span class="name">Custom Functions</span><br><span class="tag chrome">Chrome 139+</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 23</span><span class="name">Mixins Preview</span><br><span class="tag flag">Behind flag</span></a></li>
+    </ul>
+
+    <p class="part-title">Part VIII · Tailwind &amp; the ecosystem</p>
+    <ul>
+      <li><a class="card" href="#"><span class="num">Ch 24</span><span class="name">Why Tailwind Exists</span><br><span class="tag">soon</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 25</span><span class="name">Tailwind v4.3 Internals</span><br><span class="tag">soon</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 26</span><span class="name">Native CSS vs Tailwind</span><br><span class="tag">soon</span></a></li>
+    </ul>
+
+    <p class="part-title">Part IX · Production &amp; future</p>
+    <ul>
+      <li><a class="card" href="#"><span class="num">Ch 27</span><span class="name">Production</span><br><span class="tag">soon</span></a></li>
+      <li><a class="card" href="#"><span class="num">Ch 28</span><span class="name">The Future</span><br><span class="tag">soon</span></a></li>
+    </ul>
+  </div>
+</main>
+
+<footer class="wrap">
+  <p>
+    Book by <a href="https://alexanderburgos.netlify.app/">Alexander Burgos</a>,
+    UX Engineer · Code on <a href="https://github.com/alexanderuk82/modern-css-ebook">GitHub</a>
+  </p>
+  <p>9 parts · 28 chapters · Spanish and English. Verify any support label at
+    <a href="https://baseline.web.dev">baseline.web.dev</a>.</p>
+</footer>
+</body>
+</html>
