@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap 03 · Cascada, layers y @scope · CSS Moderno 2026</title>
+<meta name="description" content="El orden de capa ganando a la especificidad sin !important, y @scope evitando que los estilos se filtren. Demo del capítulo 3 de CSS Moderno 2026.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --brand: oklch(48% 0.18 295);
+    --accent: oklch(72% 0.15 210);
+    --win: oklch(58% 0.16 150);
+    --lose: oklch(60% 0.2 25);
+    --ink: light-dark(oklch(22% 0.02 290), oklch(95% 0.01 290));
+    --bg: light-dark(oklch(98% 0.01 290), oklch(18% 0.02 290));
+    --card: light-dark(oklch(100% 0 0), oklch(24% 0.02 290));
+    --line: light-dark(oklch(90% 0.01 290), oklch(36% 0.02 290));
+    --muted: light-dark(oklch(45% 0.02 290), oklch(72% 0.02 290));
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 60rem; margin-inline: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.3rem; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); margin-top: 0; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; padding: 0.15rem 0.55rem; border-radius: 999px;
+    border: 1px solid oklch(52% 0.13 165); color: oklch(52% 0.13 165);
+    margin-bottom: 1.4rem;
+  }
+  .cols {
+    display: grid; gap: 1.2rem; margin-top: 1.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  }
+  .panel {
+    border: 1px solid var(--line); border-radius: 1rem;
+    background: var(--card); padding: 1.3rem;
+  }
+  .panel h2 { margin: 0 0 0.8rem; font-size: 1rem; }
+  .panel p { font-size: 0.82rem; color: var(--muted); }
+
+  /* Panel 1: el orden de capa gana a la especificidad. El selector de la capa
+     base es mucho más específico, pero la capa theme va después, así que gana. */
+  @layer base, theme;
+  @layer base {
+    #lbox .lbtn { background: var(--lose); }
+  }
+  @layer theme {
+    .lbtn { background: var(--win); }
+  }
+  .lbtn {
+    color: white; border: 0; border-radius: 0.6rem;
+    padding: 0.7rem 1.2rem; font: inherit; font-weight: 650;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Panel 2: @scope estiliza el párrafo de la tarjeta exterior pero se para en
+     la tarjeta anidada, así que los estilos no se filtran hacia dentro. */
+  @scope (.outer) to (.nested) {
+    p.s { color: var(--brand); font-weight: 650; }
+  }
+  .outer, .nested {
+    border: 1px dashed var(--line); border-radius: 0.6rem;
+    padding: 0.8rem; margin-bottom: 0.8rem;
+  }
+
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Cascada, layers y <span class="grad">@scope</span></h1>
+  <p class="lead">Decide qué regla gana sin pelear. Capítulo 3 de CSS Moderno 2026.</p>
+  <span class="badge">BASELINE 2025/2026</span>
+
+  <div class="cols">
+    <section class="panel">
+      <h2>El orden de capa gana a la especificidad</h2>
+      <div id="lbox">
+        <button class="lbtn">Gana el verde</button>
+      </div>
+      <p>La regla roja <code>#lbox .lbtn</code> es mucho más
+        específica. La regla verde <code>.lbtn</code> está en una
+        capa posterior. Gana la capa posterior, y no hay ni un
+        <code>!important</code> por ningún lado.</p>
+    </section>
+
+    <section class="panel">
+      <h2>@scope no se filtra</h2>
+      <div class="outer">
+        <p class="s">En el scope: color de marca.</p>
+        <div class="nested">
+          <p class="s">Anidado: sin tocar, por defecto.</p>
+        </div>
+      </div>
+      <p>Los estilos aplican desde la tarjeta exterior y se paran
+        en la anidada. Sin convenciones de nombres, sin fugas.</p>
+    </section>
+  </div>
+
+  <footer>
+    Parte de las <a href="../../">demos de CSS Moderno 2026</a>. Verifica el
+    estado de soporte en <a href="https://baseline.web.dev">baseline.web.dev</a>.
+  </footer>
+</div>
+</body>
+</html>

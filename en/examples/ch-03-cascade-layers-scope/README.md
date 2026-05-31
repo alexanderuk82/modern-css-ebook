@@ -2,6 +2,15 @@
 
 > Support label: **BASELINE 2025/2026**
 
-Runnable demos for this chapter land here as the book is written. Each demo maps to a QR code in the printed book and to a live page under [`/live-demos`](../../../live-demos/).
+## Decide which rule wins without fighting
 
-Open any `index.html` straight in a modern browser. No build step unless a folder says otherwise.
+Two demos in one page:
+
+- **Layer order beats specificity**: a button is red via a high-specificity `#lbox .lbtn` in a base layer, and green via a low-specificity `.lbtn` in a later theme layer. The button is green. No `!important` anywhere.
+- **@scope does not leak**: styles apply from the outer box and stop at the nested one, using `@scope (.outer) to (.nested)`. No naming conventions, no leaks.
+
+**Open it:** `index.html` in this folder, or live at
+https://alexanderuk82.github.io/modern-css-ebook/en/c03/cascade/
+
+`@layer`, `:is()` and `:where()` are long Baseline. `@scope` is Baseline since
+late 2025, so use it with progressive enhancement.

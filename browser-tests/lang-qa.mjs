@@ -22,6 +22,9 @@ const EN_TELLS = [
   "Animated gradient", "One variable", "light to dark",
   "Drag the slider", "Hover the button", "Hover me",
   "the whole theme", "Verify the support",
+  // ch03
+  "Green wins", "Layer order beats", "does not leak",
+  "In scope", "Nested", "untouched", "no leaks",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -33,6 +36,9 @@ const ES_TELLS = [
   "Gradiente animado", "Una variable", "claro a oscuro",
   "Arrastra el slider", "Pásame el ratón", "todo el tema",
   "Verifica el", "Sin JavaScript",
+  // cap03
+  "Gana el verde", "El orden de capa", "no se filtra",
+  "En el scope", "Anidado", "sin fugas", "sin tocar",
 ];
 
 function walk(dir) {
