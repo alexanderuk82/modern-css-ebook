@@ -7,10 +7,9 @@ Bilingual repo (English and Español). This is the public code companion. Every
 QR code and every demo reference in the book resolves to a folder here, and to a
 live page under [`/live-demos`](./live-demos/).
 
-The book manuscript itself lives in a separate private repo. This one holds only
-the code, the demos, and the tooling.
-
-![The live-demos landing page in light and dark mode](./assets/preview/landing-light.png)
+The book manuscript itself lives in a separate private repo, along with the
+book tooling. This public repo holds only the code, the demos, and the live
+pages a reader needs.
 
 ---
 
@@ -28,8 +27,6 @@ es/ejemplos/cap-21-la-funcion-if/    las mismas demos en Espanol
 live-demos/                          the GitHub Pages site the QR codes open
 browser-tests/                       Playwright checks that features stay alive
 chrome-flags/                        how to try preview features (Chapter 23)
-scripts/                             voice check, code width check, scaffold
-assets/covers/                       cover art and promo images
 ```
 
 ### The support label system
@@ -108,7 +105,7 @@ funcionen desde el primer dia.
 
 | Phase | Scope | Status |
 | --- | --- | --- |
-| 1 | Repo scaffold, 28 chapters x 2 languages, README, live-demos hub, scripts, Playwright config | ✅ done |
+| 1 | Repo scaffold, 28 chapters x 2 languages, README, live-demos hub, Playwright config | ✅ done |
 | 2 | Front matter and Chapter 1 | ⏳ next |
 | 3+ | Chapters by part, demos go live, QR pages fill in | ⏳ pending |
 

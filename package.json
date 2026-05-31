@@ -22,9 +22,6 @@
     "ebook"
   ],
   "scripts": {
-    "scaffold": "python scripts/scaffold_chapters.py",
-    "check:voice": "python scripts/check_voice.py",
-    "check:width": "python scripts/check_code_width.py",
     "test:browser": "npm --prefix browser-tests test"
   }
 }
