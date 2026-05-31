@@ -13,16 +13,26 @@ const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "
 
 // Words that should only ever appear in an English demo.
 const EN_TELLS = [
+  // ch01
   "two eras", "lines of CSS", "falls back", "the support state",
   "live demos", "hand built", "comes for free", "Pick a fruit",
   "Part of", "Zero JavaScript", "still works", "the old way",
   "styled native select", "once you make it accessible",
+  // ch02
+  "Animated gradient", "One variable", "light to dark",
+  "Drag the slider", "Hover the button", "Hover me",
+  "the whole theme", "Verify the support",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
+  // cap01
   "líneas de CSS", "Elige una fruta", "dos épocas", "demos de CSS",
   "hecho a mano", "vienen gratis", "Parte de", "sigue funcionando",
   "Ciruela", "Higo", "a la antigua", "el foco", "select nativo estilizado",
+  // cap02
+  "Gradiente animado", "Una variable", "claro a oscuro",
+  "Arrastra el slider", "Pásame el ratón", "todo el tema",
+  "Verifica el", "Sin JavaScript",
 ];
 
 function walk(dir) {

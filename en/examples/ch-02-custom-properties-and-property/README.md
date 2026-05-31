@@ -2,6 +2,15 @@
 
 > Support label: **BASELINE 2024**
 
-Runnable demos for this chapter land here as the book is written. Each demo maps to a QR code in the printed book and to a live page under [`/live-demos`](../../../live-demos/).
+## Typed custom properties the browser can animate
 
-Open any `index.html` straight in a modern browser. No build step unless a folder says otherwise.
+Three demos in one page:
+
+- **Animated gradient**: a conic gradient whose start angle is a registered `@property <angle>`. The browser animates the angle, so the gradient spins. No JavaScript.
+- **One variable, light to dark**: a single custom property, set by a slider, blends a card from light to dark with `color-mix()`.
+- **Transition, not just keyframes**: a button whose registered `<percentage>` transitions smoothly on hover.
+
+**Open it:** `index.html` in this folder, or live at
+https://alexanderuk82.github.io/modern-css-ebook/en/c02/property/
+
+All of this is BASELINE 2024, so it works in Chrome, Firefox and Safari today.
