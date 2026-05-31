@@ -10,7 +10,7 @@ La demo estrella del capítulo. El mismo dropdown de dos maneras, lado a lado:
 - **JavaScript 2020**: un componente hecho a mano con manejadores de click, y aun así se salta el teclado real, el focus trap y Escape. 50+ líneas o una librería de 15 KB.
 
 **Ábrela:** el `index.html` de esta carpeta, o en vivo en
-https://alexanderuk82.github.io/modern-css-ebook/c01/dropdown/
+https://alexanderuk82.github.io/modern-css-ebook/es/c01/dropdown/
 
 Customizable select va por delante en Chromium. En otros navegadores el panel
 CSS 2026 cae a un select nativo normal que sigue funcionando, que es justo lo

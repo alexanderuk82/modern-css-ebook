@@ -1,0 +1,76 @@
+// Language QA for the demos. Catches text left in the wrong language, the exact
+// mistake an incomplete localization makes. Run after touching any demo:
+//
+//   node browser-tests/lang-qa.mjs
+//
+// Spanish demos live under es/ejemplos and live-demos/es. English ones under
+// en/examples and live-demos/en. Each must not contain the other language's
+// tell-tale words. Exit code 1 if anything leaks.
+import { readFileSync, readdirSync, statSync } from "node:fs";
+import { join } from "node:path";
+
+const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
+
+// Words that should only ever appear in an English demo.
+const EN_TELLS = [
+  "two eras", "lines of CSS", "falls back", "the support state",
+  "live demos", "hand built", "comes for free", "Pick a fruit",
+  "Part of", "Zero JavaScript", "still works", "the old way",
+  "styled native select", "once you make it accessible",
+];
+// Words that should only ever appear in a Spanish demo.
+const ES_TELLS = [
+  "líneas de CSS", "Elige una fruta", "dos épocas", "demos de CSS",
+  "hecho a mano", "vienen gratis", "Parte de", "sigue funcionando",
+  "Ciruela", "Higo", "a la antigua", "el foco", "select nativo estilizado",
+];
+
+function walk(dir) {
+  const out = [];
+  for (const name of readdirSync(dir)) {
+    const p = join(dir, name);
+    if (statSync(p).isDirectory()) {
+      if (name === "node_modules") continue;
+      out.push(...walk(p));
+    } else if (name.endsWith(".html")) {
+      out.push(p);
+    }
+  }
+  return out;
+}
+
+function check(globDir, forbidden, forbiddenLabel, fileLang) {
+  let problems = 0;
+  let files = 0;
+  for (const file of walk(join(ROOT, globDir))) {
+    files++;
+    const text = readFileSync(file, "utf-8");
+    const hits = forbidden.filter((w) => text.includes(w));
+    if (hits.length) {
+      problems += hits.length;
+      console.log(`\n  ${file.replace(ROOT, "")}`);
+      for (const h of hits) console.log(`    leaked ${forbiddenLabel}: "${h}"`);
+    }
+    // lang attribute sanity: the file must declare its own language
+    const wantLang = `lang="${fileLang}"`;
+    if (!text.includes(wantLang)) {
+      problems++;
+      console.log(`\n  ${file.replace(ROOT, "")}`);
+      console.log(`    missing ${wantLang}`);
+    }
+  }
+  return { problems, files };
+}
+
+console.log("Language QA for demos");
+// Spanish folders must not contain English tells, and must declare lang="es".
+const es1 = check("es/ejemplos", EN_TELLS, "English", "es");
+const es2 = check("live-demos/es", EN_TELLS, "English", "es");
+// English folders must not contain Spanish tells, and must declare lang="en".
+const en1 = check("en/examples", ES_TELLS, "Spanish", "en");
+const en2 = check("live-demos/en", ES_TELLS, "Spanish", "en");
+
+const total = es1.problems + es2.problems + en1.problems + en2.problems;
+const files = es1.files + es2.files + en1.files + en2.files;
+console.log(`\nScanned ${files} demo file(s). ${total} language problem(s).`);
+process.exit(total ? 1 : 0);

@@ -10,7 +10,7 @@ The chapter's star demo. The same dropdown built two ways, side by side:
 - **JavaScript 2020**: a hand built component with click handlers, and it still skips real keyboard support, focus trap and Escape. 50+ lines or a 15 KB library.
 
 **Open it:** `index.html` in this folder, or live at
-https://alexanderuk82.github.io/modern-css-ebook/c01/dropdown/
+https://alexanderuk82.github.io/modern-css-ebook/en/c01/dropdown/
 
 Customizable select leads in Chromium. In other browsers the CSS 2026 panel
 falls back to a normal native select that still works, which is the honest point
