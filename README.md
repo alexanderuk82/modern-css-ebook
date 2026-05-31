@@ -10,6 +10,8 @@ live page under [`/live-demos`](./live-demos/).
 The book manuscript itself lives in a separate private repo. This one holds only
 the code, the demos, and the tooling.
 
+![The live-demos landing page in light and dark mode](./assets/preview/landing-light.png)
+
 ---
 
 ## 🇬🇧 English
