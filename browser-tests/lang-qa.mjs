@@ -34,6 +34,9 @@ const EN_TELLS = [
   // ch06
   "Same card, two containers", "Type scales with",
   "narrow one stacks", "First programmer", "the viewport",
+  // ch07
+  "Short title", "wraps onto two lines", "Footer, aligned",
+  "no measuring", "across all three cards", "no JavaScript",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -57,6 +60,9 @@ const ES_TELLS = [
   // cap06
   "La misma card, dos contenedores", "La tipografía escala",
   "La estrecha se apila", "Primera programadora", "al viewport",
+  // cap07
+  "Título corto", "ocupa dos líneas", "Pie, alineado",
+  "Sin medir", "en las tres cards", "sin JavaScript",
 ];
 
 function walk(dir) {
