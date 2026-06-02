@@ -1,7 +1,17 @@
 # Chapter 6 examples · Container Queries
 
-> Support label: **BASELINE 2025 + CHROME ONLY**
+> Support label: **BASELINE 2025** (size + units) · **CHROME ONLY** (style + scroll-state)
 
-Runnable demos for this chapter land here as the book is written. Each demo maps to a QR code in the printed book and to a live page under [`/live-demos`](../../../live-demos/).
+## Think in component, not viewport
 
-Open any `index.html` straight in a modern browser. No build step unless a folder says otherwise.
+Two demos in one page, both BASELINE 2025:
+
+- **Same card, two containers**: identical markup in a narrow wrapper and a wide one. The narrow card stacks, the wide one goes horizontal, via `@container (min-width: 20rem)`. The wrapper is the container, not the card.
+- **Type scales with the container**: the same heading in two widths, sized with `clamp(..., 9cqi, ...)`.
+
+**Open it:** `index.html` in this folder, or live at
+https://alexanderuk82.github.io/modern-css-ebook/en/c06/container/
+
+Style queries and scroll-state queries (the sticky-shadow header) are covered in
+the chapter text with their CHROME ONLY label and full code. They need a recent
+Chrome, so they are not in this Baseline demo.

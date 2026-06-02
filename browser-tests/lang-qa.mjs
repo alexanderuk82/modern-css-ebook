@@ -31,6 +31,9 @@ const EN_TELLS = [
   // ch05
   "Responsive nav", "Sidebar that stacks", "Side by side when",
   "Sign up", "wrap on their own", "One dimension",
+  // ch06
+  "Same card, two containers", "Type scales with",
+  "narrow one stacks", "First programmer", "the viewport",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -51,6 +54,9 @@ const ES_TELLS = [
   // cap05
   "Nav responsive", "Barra lateral que se apila", "Crear cuenta",
   "se envuelven solos", "una al lado de otra", "Una dimensión",
+  // cap06
+  "La misma card, dos contenedores", "La tipografía escala",
+  "La estrecha se apila", "Primera programadora", "al viewport",
 ];
 
 function walk(dir) {
