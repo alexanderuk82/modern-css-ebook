@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap 08 · :has() · CSS Moderno 2026</title>
+<meta name="description" content="Un formulario que se valida solo y una lista de opciones que se iluminan al marcarlas, las dos con :has() y sin JavaScript. Demo del capítulo 8 de CSS Moderno 2026.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --brand: oklch(48% 0.18 295);
+    --accent: oklch(72% 0.15 210);
+    --green: oklch(58% 0.16 150);
+    --red: oklch(60% 0.2 25);
+    --ink: light-dark(oklch(22% 0.02 290), oklch(95% 0.01 290));
+    --bg: light-dark(oklch(98% 0.01 290), oklch(18% 0.02 290));
+    --card: light-dark(oklch(100% 0 0), oklch(24% 0.02 290));
+    --line: light-dark(oklch(90% 0.01 290), oklch(36% 0.02 290));
+    --muted: light-dark(oklch(45% 0.02 290), oklch(72% 0.02 290));
+    --tint: color-mix(in oklch, var(--brand) 12%, var(--card));
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 60rem; margin-inline: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.3rem; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); margin-top: 0; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; padding: 0.15rem 0.55rem; border-radius: 999px;
+    border: 1px solid oklch(52% 0.13 165); color: oklch(52% 0.13 165);
+    margin-bottom: 1.4rem;
+  }
+  .cols {
+    display: grid; gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  }
+  .panel {
+    border: 1px solid var(--line); border-radius: 1rem;
+    background: var(--card); padding: 1.3rem;
+  }
+  .panel h2 { margin: 0 0 0.9rem; font-size: 1rem; }
+  label.lbl { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.3rem; }
+
+  /* Demo 1: el campo reacciona a su propio input con :has() */
+  .field {
+    display: flex; align-items: center; gap: 0.5rem;
+    border: 2px solid var(--line); border-radius: 0.6rem;
+    padding: 0.5rem 0.7rem; background: var(--bg);
+  }
+  .field input {
+    border: 0; background: none; color: inherit;
+    font: inherit; flex: 1; outline: none;
+  }
+  .field .ok { color: var(--green); font-weight: 800; opacity: 0; }
+  .field:has(input:valid) { border-color: var(--green); }
+  .field:has(input:valid) .ok { opacity: 1; }
+  .field:has(input:user-invalid) { border-color: var(--red); }
+  .submit {
+    margin-top: 0.9rem; width: 100%;
+    background: var(--brand); color: white; border: 0;
+    border-radius: 0.6rem; padding: 0.6rem; font: inherit;
+    font-weight: 650; cursor: pointer;
+  }
+  form:has(input:user-invalid) .submit {
+    opacity: 0.45; pointer-events: none;
+  }
+
+  /* Demo 2: cada opción se ilumina cuando su radio está marcado, con :has() */
+  .option {
+    display: flex; align-items: center; gap: 0.6rem;
+    border: 2px solid var(--line); border-radius: 0.6rem;
+    padding: 0.7rem 0.8rem; margin-bottom: 0.6rem;
+    cursor: pointer;
+  }
+  .option:has(:checked) {
+    border-color: var(--brand); background: var(--tint);
+    font-weight: 650;
+  }
+
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>El selector <span class="grad">:has()</span></h1>
+  <p class="lead">Patrones que antes pedían JavaScript, ahora una línea. Capítulo 8 de CSS Moderno 2026.</p>
+  <span class="badge">BASELINE 2024</span>
+
+  <div class="cols">
+    <section class="panel">
+      <h2>Un formulario que se valida solo</h2>
+      <form>
+        <label class="lbl" for="em">Email (escribe para verlo reaccionar)</label>
+        <div class="field">
+          <input id="em" type="email" required value="ada@example.com">
+          <span class="ok">OK</span>
+        </div>
+        <button class="submit" type="button">Enviar</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Elige un plan</h2>
+      <label class="option">
+        <input type="radio" name="plan"> Gratis
+      </label>
+      <label class="option">
+        <input type="radio" name="plan" checked> Pro
+      </label>
+      <label class="option">
+        <input type="radio" name="plan"> Equipo
+      </label>
+    </section>
+  </div>
+
+  <footer>
+    Parte de las <a href="../../">demos de CSS Moderno 2026</a>. Verifica el
+    estado de soporte en <a href="https://baseline.web.dev">baseline.web.dev</a>.
+  </footer>
+</div>
+</body>
+</html>

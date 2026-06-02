@@ -2,6 +2,14 @@
 
 > Support label: **BASELINE 2024**
 
-Runnable demos for this chapter land here as the book is written. Each demo maps to a QR code in the printed book and to a live page under [`/live-demos`](../../../live-demos/).
+## Patterns that used to need JavaScript, now one line
 
-Open any `index.html` straight in a modern browser. No build step unless a folder says otherwise.
+Two demos in one page, both with `:has()` and zero JavaScript:
+
+- **A form that validates itself**: the field turns green via `.field:has(input:valid)` and red via `:has(input:user-invalid)`, and the submit button disables itself via `form:has(input:user-invalid)`.
+- **Pick a plan**: each option lights up via `.option:has(:checked)`.
+
+**Open it:** `index.html` in this folder, or live at
+https://alexanderuk82.github.io/modern-css-ebook/en/c08/has/
+
+`:has()`, `:is()`, `:where()` and `:nth-child(of S)` are all BASELINE 2024.

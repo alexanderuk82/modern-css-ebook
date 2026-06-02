@@ -37,6 +37,9 @@ const EN_TELLS = [
   // ch07
   "Short title", "wraps onto two lines", "Footer, aligned",
   "no measuring", "across all three cards", "no JavaScript",
+  // ch08
+  "validates itself", "Pick a plan", "type to see it react",
+  "used to need JavaScript", "Submit",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -63,6 +66,9 @@ const ES_TELLS = [
   // cap07
   "Título corto", "ocupa dos líneas", "Pie, alineado",
   "Sin medir", "en las tres cards", "sin JavaScript",
+  // cap08
+  "se valida solo", "Elige un plan", "escribe para verlo",
+  "antes pedían JavaScript", "Enviar",
 ];
 
 function walk(dir) {
