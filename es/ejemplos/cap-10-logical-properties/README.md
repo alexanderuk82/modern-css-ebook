@@ -2,6 +2,12 @@
 
 > Etiqueta de soporte: **BASELINE**
 
-Las demos ejecutables de este capitulo van llegando aqui segun se escribe el libro. Cada demo corresponde a un QR del libro impreso y a una pagina viva en [`/live-demos`](../../../live-demos/).
+## CSS que funciona en cualquier idioma sin reescribir
 
-Abre cualquier `index.html` directo en un navegador moderno. Sin paso de build salvo que una carpeta diga lo contrario.
+- **La misma tarjeta, dos direcciones**: una clase con `border-inline-start`, `padding-inline` y `text-align: start`. En LTR la barra de acento va a la izquierda; en una tarjeta árabe con `dir="rtl"` salta sola a la derecha. El mismo CSS, sin duplicar.
+
+**Ábrela:** el `index.html` de esta carpeta, o en vivo en
+https://alexanderuk82.github.io/modern-css-ebook/es/c10/logical/
+
+Las logical properties son BASELINE. Escribe lógico por defecto (`margin-inline`,
+`padding-block`, `inset`) y tu CSS queda listo para RTL y escritura vertical.

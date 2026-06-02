@@ -43,6 +43,9 @@ const EN_TELLS = [
   // ch09
   "Clean architecture", "no Sass, no BEM", "View source",
   "nested block", "the featured variant", "Standard",
+  // ch10
+  "any language without rewriting", "Hello world",
+  "the start edge, here the left", "share one class",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -75,6 +78,9 @@ const ES_TELLS = [
   // cap09
   "Arquitectura limpia", "sin Sass, sin BEM", "el código fuente",
   "bloque anidado", "variante destacada", "Estándar",
+  // cap10
+  "cualquier idioma sin reescribir", "Hola mundo",
+  "borde de inicio, aquí la izquierda", "comparten una clase",
 ];
 
 function walk(dir) {
