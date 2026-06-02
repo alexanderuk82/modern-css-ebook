@@ -40,6 +40,9 @@ const EN_TELLS = [
   // ch08
   "validates itself", "Pick a plan", "type to see it react",
   "used to need JavaScript", "Submit",
+  // ch09
+  "Clean architecture", "no Sass, no BEM", "View source",
+  "nested block", "the featured variant", "Standard",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -69,6 +72,9 @@ const ES_TELLS = [
   // cap08
   "se valida solo", "Elige un plan", "escribe para verlo",
   "antes pedían JavaScript", "Enviar",
+  // cap09
+  "Arquitectura limpia", "sin Sass, sin BEM", "el código fuente",
+  "bloque anidado", "variante destacada", "Estándar",
 ];
 
 function walk(dir) {

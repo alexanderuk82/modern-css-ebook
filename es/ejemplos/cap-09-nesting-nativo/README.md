@@ -2,6 +2,12 @@
 
 > Etiqueta de soporte: **BASELINE 2024/2025**
 
-Las demos ejecutables de este capitulo van llegando aqui segun se escribe el libro. Cada demo corresponde a un QR del libro impreso y a una pagina viva en [`/live-demos`](../../../live-demos/).
+## Arquitectura limpia, sin Sass, sin BEM
 
-Abre cualquier `index.html` directo en un navegador moderno. Sin paso de build salvo que una carpeta diga lo contrario.
+- **Card anidada con variante destacada**: toda la card vive en un solo bloque anidado. La variante destacada es un `&.featured` anidado (con su propio `& .title` y `& .tag`), así que la card resaltada no necesita reglas extra fuera del bloque.
+
+**Ábrela:** el `index.html` de esta carpeta, o en vivo en
+https://alexanderuk82.github.io/modern-css-ebook/es/c09/nesting/
+
+El nesting nativo es BASELINE 2024/2025. Combínalo con `@scope` y `@layer` del
+capítulo 3 para la arquitectura moderna completa, sin preprocesador.

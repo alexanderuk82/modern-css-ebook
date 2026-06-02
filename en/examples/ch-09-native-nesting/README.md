@@ -2,6 +2,12 @@
 
 > Support label: **BASELINE 2024/2025**
 
-Runnable demos for this chapter land here as the book is written. Each demo maps to a QR code in the printed book and to a live page under [`/live-demos`](../../../live-demos/).
+## Clean architecture, no Sass, no BEM
 
-Open any `index.html` straight in a modern browser. No build step unless a folder says otherwise.
+- **Nested card with a featured variant**: the whole card lives in one nested block. The featured variant is a nested `&.featured` (with its own nested `& .title` and `& .tag`), so the highlighted card needs no extra rules outside the block.
+
+**Open it:** `index.html` in this folder, or live at
+https://alexanderuk82.github.io/modern-css-ebook/en/c09/nesting/
+
+Native nesting is BASELINE 2024/2025. Pair it with `@scope` and `@layer` from
+Chapter 3 for the full modern architecture, no preprocessor.
