@@ -1,6 +1,6 @@
 # Ejemplos del capitulo 2 · Custom properties y @property
 
-> Etiqueta de soporte: **BASELINE 2024**
+> Etiqueta de soporte: **BASELINE 2024/2025**
 
 ## Custom properties con tipo que el navegador sí puede animar
 
@@ -13,4 +13,4 @@ Tres demos en una página:
 **Ábrela:** el `index.html` de esta carpeta, o en vivo en
 https://alexanderuk82.github.io/modern-css-ebook/es/c02/property/
 
-Todo esto es BASELINE 2024, así que funciona en Chrome, Firefox y Safari hoy.
+Todo esto es BASELINE 2024/2025, así que funciona en Chrome, Firefox y Safari hoy.

@@ -1,6 +1,6 @@
 # Chapter 2 examples · Custom Properties and @property
 
-> Support label: **BASELINE 2024**
+> Support label: **BASELINE 2024/2025**
 
 ## Typed custom properties the browser can animate
 
@@ -13,4 +13,4 @@ Three demos in one page:
 **Open it:** `index.html` in this folder, or live at
 https://alexanderuk82.github.io/modern-css-ebook/en/c02/property/
 
-All of this is BASELINE 2024, so it works in Chrome, Firefox and Safari today.
+All of this is BASELINE 2024/2025, so it works in Chrome, Firefox and Safari today.

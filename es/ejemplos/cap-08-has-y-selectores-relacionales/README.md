@@ -1,6 +1,6 @@
 # Ejemplos del capitulo 8 · :has() y selectores relacionales
 
-> Etiqueta de soporte: **BASELINE 2024**
+> Etiqueta de soporte: **BASELINE 2024/2025**
 
 ## Patrones que antes pedían JavaScript, ahora una línea
 
@@ -12,4 +12,4 @@ Dos demos en una página, las dos con `:has()` y cero JavaScript:
 **Ábrela:** el `index.html` de esta carpeta, o en vivo en
 https://alexanderuk82.github.io/modern-css-ebook/es/c08/has/
 
-`:has()`, `:is()`, `:where()` y `:nth-child(of S)` son todos BASELINE 2024.
+`:has()`, `:is()`, `:where()` y `:nth-child(of S)` son todos BASELINE 2024/2025.

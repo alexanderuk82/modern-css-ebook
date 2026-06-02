@@ -1,10 +1,10 @@
 # Ejemplos del capitulo 6 · Container queries completas
 
-> Etiqueta de soporte: **BASELINE 2025** (size + unidades) · **CHROME ONLY** (style + scroll-state)
+> Etiqueta de soporte: **BASELINE 2024/2025** (size + unidades) · **CHROME ONLY** (style + scroll-state)
 
 ## Piensa en componente, no en viewport
 
-Dos demos en una página, las dos BASELINE 2025:
+Dos demos en una página, las dos BASELINE 2024/2025:
 
 - **La misma card, dos contenedores**: el mismo HTML en un envoltorio estrecho y en uno ancho. La card estrecha se apila, la ancha va en horizontal, con `@container (min-width: 20rem)`. El contenedor es el envoltorio, no la card.
 - **La tipografía escala con el contenedor**: el mismo título en dos anchos, con `clamp(..., 9cqi, ...)`.

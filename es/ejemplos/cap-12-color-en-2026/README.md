@@ -1,6 +1,6 @@
 # Ejemplos del capitulo 12 · Color en 2026
 
-> Etiqueta de soporte: **BASELINE 2024 + BASELINE 2026**
+> Etiqueta de soporte: **BASELINE 2024/2025 + BASELINE 2026**
 
 Las demos ejecutables de este capitulo van llegando aqui segun se escribe el libro. Cada demo corresponde a un QR del libro impreso y a una pagina viva en [`/live-demos`](../../../live-demos/).
 

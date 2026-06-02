@@ -1,6 +1,6 @@
 # Chapter 8 examples · :has() and Relational Selectors
 
-> Support label: **BASELINE 2024**
+> Support label: **BASELINE 2024/2025**
 
 ## Patterns that used to need JavaScript, now one line
 
@@ -12,4 +12,4 @@ Two demos in one page, both with `:has()` and zero JavaScript:
 **Open it:** `index.html` in this folder, or live at
 https://alexanderuk82.github.io/modern-css-ebook/en/c08/has/
 
-`:has()`, `:is()`, `:where()` and `:nth-child(of S)` are all BASELINE 2024.
+`:has()`, `:is()`, `:where()` and `:nth-child(of S)` are all BASELINE 2024/2025.
