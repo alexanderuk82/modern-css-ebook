@@ -46,6 +46,9 @@ const EN_TELLS = [
   // ch10
   "any language without rewriting", "Hello world",
   "the start edge, here the left", "share one class",
+  // ch11
+  "no hand-written indexes", "draws a wave", "Each bar is offset",
+  "expected Baseline 2026", "Staggered motion",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -81,6 +84,9 @@ const ES_TELLS = [
   // cap10
   "cualquier idioma sin reescribir", "Hola mundo",
   "borde de inicio, aquí la izquierda", "comparten una clase",
+  // cap11
+  "índices a mano", "dibuja una onda", "Cada barra va desfasada",
+  "esperado Baseline 2026", "Movimiento escalonado",
 ];
 
 function walk(dir) {
