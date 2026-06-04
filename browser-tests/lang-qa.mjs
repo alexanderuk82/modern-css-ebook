@@ -49,6 +49,9 @@ const EN_TELLS = [
   // ch11
   "no hand-written indexes", "draws a wave", "Each bar is offset",
   "expected Baseline 2026", "Staggered motion",
+  // ch12
+  "One color, a whole palette", "color-mix() scale",
+  "the second value wins", "all derived from", "one function",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -87,6 +90,9 @@ const ES_TELLS = [
   // cap11
   "índices a mano", "dibuja una onda", "Cada barra va desfasada",
   "esperado Baseline 2026", "Movimiento escalonado",
+  // cap12
+  "Un color, una paleta entera", "Escala con color-mix",
+  "gana el segundo valor", "todos derivados de", "una sola función",
 ];
 
 function walk(dir) {
