@@ -58,6 +58,9 @@ const EN_TELLS = [
   // ch14
   "used to need SVG", "notched ticket with mask", "Admit one",
   "blended layers", "Gradient border-image", "No images, no SVG",
+  // ch15
+  "Dropdown from display", "Accordion, no JavaScript", "Account menu",
+  "fades and springs in", "Expressive animation",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -105,6 +108,9 @@ const ES_TELLS = [
   // cap14
   "antes pedían SVG", "ticket dentado con mask", "Entrada",
   "capas mezcladas", "Border-image en degradado", "Sin imágenes, sin SVG",
+  // cap15
+  "Dropdown desde display", "Acordeón, sin JavaScript", "Menú de cuenta",
+  "un fundido y un rebote", "Animación expresiva", "Cerrar sesión",
 ];
 
 function walk(dir) {
