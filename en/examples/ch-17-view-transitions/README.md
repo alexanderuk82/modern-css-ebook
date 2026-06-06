@@ -1,7 +1,14 @@
 # Chapter 17 examples · View Transitions
 
-> Support label: **BASELINE 2025/2026**
+> Support label: **BASELINE 2025** (same-document) · **BASELINE 2026** (cross-document)
 
-Runnable demos for this chapter land here as the book is written. Each demo maps to a QR code in the printed book and to a live page under [`/live-demos`](../../../live-demos/).
+## Fluid transitions without Framer Motion
 
-Open any `index.html` straight in a modern browser. No build step unless a folder says otherwise.
+- **Shared-element gallery**: tap a tile and it flies from its spot and grows into the detail view, morphing via a shared `view-transition-name: hero`. The only JavaScript is `document.startViewTransition()`; CSS does the animation.
+
+**Open it:** `index.html` in this folder, or live at
+https://alexanderuk82.github.io/modern-css-ebook/en/c17/view/
+
+Same-document view transitions are BASELINE 2025 and degrade cleanly: where
+`startViewTransition` is missing, the state changes with no animation.
+Cross-document (`@view-transition { navigation: auto }`) is covered in the chapter.

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch 17 · View Transitions · Modern CSS 2026</title>
+<meta name="description" content="A gallery where a photo flies from its spot to a full detail view with a shared-element view transition. Demo for Chapter 17 of Modern CSS 2026.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --brand: oklch(48% 0.18 295);
+    --accent: oklch(72% 0.15 210);
+    --ink: light-dark(oklch(22% 0.02 290), oklch(95% 0.01 290));
+    --bg: light-dark(oklch(98% 0.01 290), oklch(18% 0.02 290));
+    --card: light-dark(oklch(100% 0 0), oklch(24% 0.02 290));
+    --line: light-dark(oklch(90% 0.01 290), oklch(36% 0.02 290));
+    --muted: light-dark(oklch(45% 0.02 290), oklch(72% 0.02 290));
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 52rem; margin-inline: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.3rem; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); margin-top: 0; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; padding: 0.15rem 0.55rem; border-radius: 999px;
+    border: 1px solid oklch(52% 0.13 165); color: oklch(52% 0.13 165);
+    margin-bottom: 1.4rem;
+  }
+  .hint { font-size: 0.8rem; color: var(--muted); margin: 0 0 1rem; }
+
+  .grid {
+    display: grid; gap: 0.8rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .tile {
+    border: 0; padding: 0; cursor: pointer;
+    aspect-ratio: 1; border-radius: 0.9rem;
+  }
+
+  .detail { display: grid; gap: 1rem; }
+  .back {
+    justify-self: start; cursor: pointer;
+    background: var(--card); color: var(--ink);
+    border: 1px solid var(--line); border-radius: 0.6rem;
+    padding: 0.5rem 0.9rem; font: inherit; font-weight: 650;
+  }
+  .big {
+    height: 16rem; border-radius: 1.2rem;
+    view-transition-name: hero;
+  }
+
+  [hidden] { display: none !important; }
+
+  ::view-transition-old(hero),
+  ::view-transition-new(hero) {
+    animation-duration: 0.45s;
+    animation-timing-function:
+      cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>View <span class="grad">transitions</span></h1>
+  <p class="lead">Fluid transitions without Framer Motion. Chapter 17 of Modern CSS 2026.</p>
+  <span class="badge">BASELINE 2025/2026</span>
+  <p class="hint">Tap a tile. It flies from its spot and grows into the detail, then back. The morph is a shared-element view transition.</p>
+
+  <div id="grid" class="grid">
+    <button class="tile" style="background: oklch(62% 0.2 20)"></button>
+    <button class="tile" style="background: oklch(64% 0.17 150)"></button>
+    <button class="tile" style="background: oklch(60% 0.2 295)"></button>
+    <button class="tile" style="background: oklch(70% 0.16 210)"></button>
+    <button class="tile" style="background: oklch(72% 0.18 70)"></button>
+    <button class="tile" style="background: oklch(58% 0.2 340)"></button>
+  </div>
+
+  <section id="detail" class="detail" hidden>
+    <button id="back" class="back">Back to grid</button>
+    <div id="big" class="big"></div>
+  </section>
+
+  <footer>
+    Part of <a href="../../">Modern CSS 2026 live demos</a>. Verify the support
+    state at <a href="https://baseline.web.dev">baseline.web.dev</a>.
+  </footer>
+</div>
+
+<script>
+  const grid = document.getElementById("grid");
+  const detail = document.getElementById("detail");
+  const big = document.getElementById("big");
+  const back = document.getElementById("back");
+  let active = null;
+
+  // The only JavaScript: tell the browser when the page changes.
+  // CSS does the actual animation via the shared view-transition-name.
+  grid.addEventListener("click", (e) => {
+    const tile = e.target.closest(".tile");
+    if (!tile) return;
+    if (active) active.style.viewTransitionName = "";
+    active = tile;
+    tile.style.viewTransitionName = "hero";
+    big.style.background = tile.style.background;
+    const change = () => { grid.hidden = true; detail.hidden = false; };
+    if (!document.startViewTransition) return change();
+    document.startViewTransition(change);
+  });
+
+  back.addEventListener("click", () => {
+    const change = () => { detail.hidden = true; grid.hidden = false; };
+    if (!document.startViewTransition) return change();
+    document.startViewTransition(change);
+  });
+</script>
+</body>
+</html>

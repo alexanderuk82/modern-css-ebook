@@ -64,6 +64,9 @@ const EN_TELLS = [
   // ch16
   "not the clock", "Reveal on enter", "Off the main thread",
   "no scroll listeners", "Scroll down. The bar", "Progress bar",
+  // ch17
+  "without Framer Motion", "Tap a tile", "Back to grid",
+  "grows into the detail", "shared-element view transition",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -117,6 +120,9 @@ const ES_TELLS = [
   // cap16
   "no al reloj", "Reveal al entrar", "Fuera del hilo principal",
   "sin listeners de scroll", "Baja con el scroll", "Barra de progreso",
+  // cap17
+  "sin Framer Motion", "Toca un recuadro", "Volver a la galería",
+  "crece hasta el detalle", "de elemento compartido",
 ];
 
 function walk(dir) {
