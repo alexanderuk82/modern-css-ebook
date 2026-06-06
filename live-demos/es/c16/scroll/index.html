@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap 16 · Scroll-driven animations · CSS Moderno 2026</title>
+<meta name="description" content="Una barra de progreso de lectura ligada a scroll() y tarjetas que se revelan con view(), sin IntersectionObserver. Demo del capítulo 16 de CSS Moderno 2026.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --brand: oklch(48% 0.18 295);
+    --accent: oklch(72% 0.15 210);
+    --ink: light-dark(oklch(22% 0.02 290), oklch(95% 0.01 290));
+    --bg: light-dark(oklch(98% 0.01 290), oklch(18% 0.02 290));
+    --card: light-dark(oklch(100% 0 0), oklch(24% 0.02 290));
+    --line: light-dark(oklch(90% 0.01 290), oklch(36% 0.02 290));
+    --muted: light-dark(oklch(45% 0.02 290), oklch(72% 0.02 290));
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 48rem; margin-inline: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.3rem; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); margin-top: 0; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; padding: 0.15rem 0.55rem; border-radius: 999px;
+    border: 1px solid oklch(52% 0.13 165); color: oklch(52% 0.13 165);
+    margin-bottom: 1.4rem;
+  }
+  .hint { font-size: 0.8rem; color: var(--muted); }
+
+  /* La barra de progreso de lectura: una línea de tiempo scroll() mueve el scaleX. */
+  .progress {
+    position: fixed; inset: 0 0 auto 0; height: 6px;
+    transform-origin: left; transform: scaleX(0);
+    background: linear-gradient(90deg, var(--brand), var(--accent));
+    z-index: 10;
+    animation: grow linear;
+    animation-timeline: scroll(root block);
+  }
+  @keyframes grow { to { transform: scaleX(1); } }
+
+  /* Las tarjetas se revelan al entrar en pantalla con una línea de tiempo view(). */
+  .card {
+    border: 1px solid var(--line); border-radius: 1rem;
+    background: var(--card); padding: 1.6rem;
+    margin-block: 1.4rem; min-height: 9rem;
+    display: grid; align-content: center; gap: 0.3rem;
+    animation: rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 35%;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: none; }
+  }
+  .card .n {
+    font-size: 0.75rem; font-weight: 700; color: var(--brand);
+  }
+  .card h3 { margin: 0; }
+  .card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .progress, .card { animation: none; }
+    .card { opacity: 1; transform: none; }
+  }
+
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="progress"></div>
+<div class="wrap">
+  <h1>Scroll-driven <span class="grad">animations</span></h1>
+  <p class="lead">Ligadas al scroll, no al reloj. Capítulo 16 de CSS Moderno 2026.</p>
+  <span class="badge">BASELINE 2026</span>
+  <p class="hint">Baja con el scroll. La barra de arriba del todo se llena con tu scroll, y
+    cada tarjeta sube al entrar en pantalla. Sin IntersectionObserver, sin JavaScript.</p>
+
+  <div class="card"><span class="n">01</span><h3>Barra de progreso</h3><p>La barra de arriba usa animation-timeline: scroll(root).</p></div>
+  <div class="card"><span class="n">02</span><h3>Reveal al entrar</h3><p>Esta tarjeta usa animation-timeline: view().</p></div>
+  <div class="card"><span class="n">03</span><h3>animation-range</h3><p>Termina en cover 35%, mostrada del todo pronto.</p></div>
+  <div class="card"><span class="n">04</span><h3>Fuera del hilo principal</h3><p>El navegador la corre en el compositor, así que va suave.</p></div>
+  <div class="card"><span class="n">05</span><h3>Degrada limpio</h3><p>Donde no hay soporte, el contenido se ve en su sitio.</p></div>
+  <div class="card"><span class="n">06</span><h3>Menos movimiento</h3><p>Respeta prefers-reduced-motion y se apaga.</p></div>
+  <div class="card"><span class="n">07</span><h3>Timelines con nombre</h3><p>scroll-timeline conecta elementos lejanos.</p></div>
+  <div class="card"><span class="n">08</span><h3>CSS puro</h3><p>Sin librería, sin listeners de scroll, sin fugas.</p></div>
+
+  <footer>
+    Parte de las <a href="../../">demos de CSS Moderno 2026</a>. Verifica el
+    estado de soporte en <a href="https://baseline.web.dev">baseline.web.dev</a>.
+  </footer>
+</div>
+</body>
+</html>

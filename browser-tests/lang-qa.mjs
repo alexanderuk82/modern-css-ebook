@@ -61,6 +61,9 @@ const EN_TELLS = [
   // ch15
   "Dropdown from display", "Accordion, no JavaScript", "Account menu",
   "fades and springs in", "Expressive animation",
+  // ch16
+  "not the clock", "Reveal on enter", "Off the main thread",
+  "no scroll listeners", "Scroll down. The bar", "Progress bar",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -111,6 +114,9 @@ const ES_TELLS = [
   // cap15
   "Dropdown desde display", "Acordeón, sin JavaScript", "Menú de cuenta",
   "un fundido y un rebote", "Animación expresiva", "Cerrar sesión",
+  // cap16
+  "no al reloj", "Reveal al entrar", "Fuera del hilo principal",
+  "sin listeners de scroll", "Baja con el scroll", "Barra de progreso",
 ];
 
 function walk(dir) {
