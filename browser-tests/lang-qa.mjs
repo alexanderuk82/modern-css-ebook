@@ -55,6 +55,9 @@ const EN_TELLS = [
   // ch13
   "Professional type without", "evens the line", "Tabular numbers",
   "digits into columns", "Resize the window to see it scale",
+  // ch14
+  "used to need SVG", "notched ticket with mask", "Admit one",
+  "blended layers", "Gradient border-image", "No images, no SVG",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -99,6 +102,9 @@ const ES_TELLS = [
   // cap13
   "Tipografía profesional sin", "iguala el largo", "Números tabulares",
   "dígitos en columnas", "míralo escalar",
+  // cap14
+  "antes pedían SVG", "ticket dentado con mask", "Entrada",
+  "capas mezcladas", "Border-image en degradado", "Sin imágenes, sin SVG",
 ];
 
 function walk(dir) {

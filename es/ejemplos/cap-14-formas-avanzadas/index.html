@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap 14 · Formas avanzadas · CSS Moderno 2026</title>
+<meta name="description" content="Un ticket dentado hecho con mask, capas mezcladas con mix-blend-mode, y un marco con border-image en degradado. Demo del capítulo 14 de CSS Moderno 2026.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --brand: oklch(48% 0.18 295);
+    --accent: oklch(72% 0.15 210);
+    --pink: oklch(70% 0.2 0);
+    --ink: light-dark(oklch(22% 0.02 290), oklch(95% 0.01 290));
+    --bg: light-dark(oklch(98% 0.01 290), oklch(18% 0.02 290));
+    --card: light-dark(oklch(100% 0 0), oklch(24% 0.02 290));
+    --line: light-dark(oklch(90% 0.01 290), oklch(36% 0.02 290));
+    --muted: light-dark(oklch(45% 0.02 290), oklch(72% 0.02 290));
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 60rem; margin-inline: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.3rem; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); margin-top: 0; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; padding: 0.15rem 0.55rem; border-radius: 999px;
+    border: 1px solid oklch(52% 0.13 165); color: oklch(52% 0.13 165);
+    margin-bottom: 1.4rem;
+  }
+  h2 { font-size: 1rem; margin: 1.6rem 0 0.3rem; }
+  .hint { font-size: 0.8rem; color: var(--muted); margin: 0 0 0.8rem; }
+  .cols {
+    display: grid; gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+
+  /* Ticket dentado: dos degradados radiales recortan las muescas laterales. */
+  .ticket {
+    --r: 15px;
+    background: linear-gradient(135deg, var(--brand), var(--accent));
+    color: white; padding: 1.3rem 1.5rem;
+    border-radius: 0.8rem;
+    font-weight: 650;
+    mask:
+      radial-gradient(
+        var(--r) at 0 50%, #0000 98%, #000
+      ) no-repeat,
+      radial-gradient(
+        var(--r) at 100% 50%, #0000 98%, #000
+      ) no-repeat;
+    mask-composite: intersect;
+  }
+  .ticket small { display: block; opacity: 0.85; font-weight: 400; }
+
+  /* mix-blend-mode: los círculos que se solapan se tiñen donde se cruzan. */
+  .blend {
+    position: relative; height: 9rem;
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 0.8rem; overflow: hidden;
+  }
+  .blend span {
+    position: absolute; width: 6rem; height: 6rem;
+    border-radius: 50%; mix-blend-mode: multiply;
+    top: 1.4rem;
+  }
+  .blend .a { left: 1.4rem; background: var(--brand); }
+  .blend .b { left: 4.2rem; background: var(--accent); }
+  .blend .c { left: 7rem; background: var(--pink); }
+
+  /* border-image: un degradado en vez de un color de borde plano. */
+  .frame {
+    border: 5px solid;
+    border-image: linear-gradient(
+      45deg, var(--brand), var(--accent)
+    ) 1;
+    padding: 1.3rem; background: var(--card);
+    font-weight: 650;
+  }
+
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Formas <span class="grad">avanzadas</span></h1>
+  <p class="lead">Formas que antes pedían SVG, ahora en CSS puro. Capítulo 14 de CSS Moderno 2026.</p>
+  <span class="badge">BASELINE 2026</span>
+
+  <p class="hint">Un ticket dentado con mask, capas mezcladas con mix-blend-mode,
+    y un marco con border-image en degradado. Sin imágenes, sin SVG.</p>
+  <div class="cols">
+    <div class="ticket">
+      Entrada
+      <small>Muescas recortadas con una máscara CSS</small>
+    </div>
+    <div class="blend">
+      <span class="a"></span>
+      <span class="b"></span>
+      <span class="c"></span>
+    </div>
+    <div class="frame">
+      Border-image en degradado, no una línea plana.
+    </div>
+  </div>
+
+  <footer>
+    Parte de las <a href="../../">demos de CSS Moderno 2026</a>. Verifica el
+    estado de soporte en <a href="https://baseline.web.dev">baseline.web.dev</a>.
+  </footer>
+</div>
+</body>
+</html>
