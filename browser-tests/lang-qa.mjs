@@ -52,6 +52,9 @@ const EN_TELLS = [
   // ch12
   "One color, a whole palette", "color-mix() scale",
   "the second value wins", "all derived from", "one function",
+  // ch13
+  "Professional type without", "evens the line", "Tabular numbers",
+  "digits into columns", "Resize the window to see it scale",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -93,6 +96,9 @@ const ES_TELLS = [
   // cap12
   "Un color, una paleta entera", "Escala con color-mix",
   "gana el segundo valor", "todos derivados de", "una sola función",
+  // cap13
+  "Tipografía profesional sin", "iguala el largo", "Números tabulares",
+  "dígitos en columnas", "míralo escalar",
 ];
 
 function walk(dir) {

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch 13 · Modern Typography · Modern CSS 2026</title>
+<meta name="description" content="text-wrap balance versus default, fluid type with clamp, and tabular numbers. Demo for Chapter 13 of Modern CSS 2026.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --brand: oklch(48% 0.18 295);
+    --accent: oklch(72% 0.15 210);
+    --ink: light-dark(oklch(22% 0.02 290), oklch(95% 0.01 290));
+    --bg: light-dark(oklch(98% 0.01 290), oklch(18% 0.02 290));
+    --card: light-dark(oklch(100% 0 0), oklch(24% 0.02 290));
+    --line: light-dark(oklch(90% 0.01 290), oklch(36% 0.02 290));
+    --muted: light-dark(oklch(45% 0.02 290), oklch(72% 0.02 290));
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 60rem; margin-inline: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.3rem; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); margin-top: 0; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; padding: 0.15rem 0.55rem; border-radius: 999px;
+    border: 1px solid oklch(52% 0.13 165); color: oklch(52% 0.13 165);
+    margin-bottom: 1.4rem;
+  }
+  h2 { font-size: 1rem; margin: 1.6rem 0 0.3rem; }
+  .hint { font-size: 0.8rem; color: var(--muted); margin: 0 0 0.8rem; }
+
+  .heads { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+  .col {
+    border: 1px solid var(--line); border-radius: 0.8rem;
+    padding: 1.1rem; background: var(--card);
+  }
+  .col .lab { font-size: 0.7rem; font-weight: 700; color: var(--muted); }
+  .col h3 { font-size: 1.3rem; margin: 0.3rem 0 0; line-height: 1.2; }
+  .balanced h3 { text-wrap: balance; }
+
+  .fluid {
+    container-type: inline-size;
+    border: 1px solid var(--line); border-radius: 0.8rem;
+    padding: 1.2rem; background: var(--card);
+  }
+  .fluid h3 {
+    margin: 0;
+    font-size: clamp(1.4rem, 9cqi, 3.4rem);
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .nums { display: flex; gap: 2.5rem; }
+  .nums ul { list-style: none; margin: 0.3rem 0 0; padding: 0; }
+  .nums li { font-size: 1.05rem; }
+  .tab li { font-variant-numeric: tabular-nums; }
+  .nums .lab { font-size: 0.7rem; font-weight: 700; color: var(--muted); }
+
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Modern <span class="grad">typography</span></h1>
+  <p class="lead">Professional type without the old tricks. Chapter 13 of Modern CSS 2026.</p>
+  <span class="badge">BASELINE 2024/2025</span>
+
+  <h2>text-wrap: balance</h2>
+  <p class="hint">Same heading, same width. Balance evens the line lengths.</p>
+  <div class="heads">
+    <div class="col">
+      <span class="lab">DEFAULT</span>
+      <h3>Modern typography breaks your headings beautifully</h3>
+    </div>
+    <div class="col balanced">
+      <span class="lab">text-wrap: balance</span>
+      <h3>Modern typography breaks your headings beautifully</h3>
+    </div>
+  </div>
+
+  <h2>Fluid type with clamp()</h2>
+  <p class="hint">Sized with clamp(1.4rem, 9cqi, 3.4rem). Resize the window to see it scale.</p>
+  <div class="fluid"><h3>Fluid</h3></div>
+
+  <h2>Tabular numbers</h2>
+  <p class="hint">font-variant-numeric: tabular-nums lines digits into columns.</p>
+  <div class="nums">
+    <div>
+      <span class="lab">PROPORTIONAL</span>
+      <ul><li>1,204.50</li><li>998.10</li><li>47.99</li></ul>
+    </div>
+    <div class="tab">
+      <span class="lab">TABULAR</span>
+      <ul><li>1,204.50</li><li>998.10</li><li>47.99</li></ul>
+    </div>
+  </div>
+
+  <footer>
+    Part of <a href="../../">Modern CSS 2026 live demos</a>. Verify the support
+    state at <a href="https://baseline.web.dev">baseline.web.dev</a>.
+  </footer>
+</div>
+</body>
+</html>
