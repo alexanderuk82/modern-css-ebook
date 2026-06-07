@@ -73,6 +73,9 @@ const EN_TELLS = [
   // ch19
   "Style the real select", "Choose a plan", "United Kingdom",
   "falls back to a native select", "keep the native accessibility",
+  // ch20
+  "no intermediate variables", "Grid columns from an attribute",
+  "Chip color from an attribute", "Pass data from HTML",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -135,6 +138,9 @@ const ES_TELLS = [
   // cap19
   "Estiliza el select de verdad", "Elige un plan", "Reino Unido",
   "cae a un select nativo", "conserva la accesibilidad nativa",
+  // cap20
+  "sin variables intermedias", "Columnas de grid desde un atributo",
+  "Color del chip desde un atributo", "Pasa datos del HTML",
 ];
 
 function walk(dir) {
