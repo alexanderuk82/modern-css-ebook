@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch 19 · Customizable Select · Modern CSS 2026</title>
+<meta name="description" content="A fully styled customizable select and a country picker with flags, with a native fallback. Demo for Chapter 19 of Modern CSS 2026.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --brand: oklch(48% 0.18 295);
+    --accent: oklch(72% 0.15 210);
+    --ink: light-dark(oklch(22% 0.02 290), oklch(95% 0.01 290));
+    --bg: light-dark(oklch(98% 0.01 290), oklch(18% 0.02 290));
+    --card: light-dark(oklch(100% 0 0), oklch(24% 0.02 290));
+    --line: light-dark(oklch(90% 0.01 290), oklch(36% 0.02 290));
+    --muted: light-dark(oklch(45% 0.02 290), oklch(72% 0.02 290));
+    --tint: color-mix(in oklch, var(--accent) 16%, var(--card));
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 52rem; margin-inline: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.3rem; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); margin-top: 0; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; padding: 0.15rem 0.55rem; border-radius: 999px;
+    border: 1px solid oklch(60% 0.15 70); color: oklch(60% 0.15 70);
+    margin-bottom: 1.4rem;
+  }
+  h2 { font-size: 1rem; margin: 1.6rem 0 0.3rem; }
+  .hint { font-size: 0.8rem; color: var(--muted); margin: 0 0 0.7rem; }
+  label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.3rem; }
+  .cols { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+
+  /* Take control of the select and its picker. */
+  select,
+  ::picker(select) {
+    appearance: base-select;
+  }
+  select {
+    font: inherit; color: inherit; cursor: pointer;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 0.6rem;
+    padding: 0.6rem 0.8rem; width: 100%;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  ::picker(select) {
+    border: 1px solid var(--line);
+    border-radius: 0.7rem;
+    background: var(--card);
+    box-shadow: 0 12px 28px #0002;
+    padding: 0.35rem; margin-top: 0.3rem;
+  }
+  ::picker-icon { color: var(--muted); transition: rotate 0.2s; }
+  select:open::picker-icon { rotate: 180deg; }
+  option {
+    padding: 0.5rem 0.6rem; border-radius: 0.45rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  option:hover { background: var(--tint); }
+  option::checkmark { content: "\2713"; color: var(--brand); order: 1; margin-inline-start: auto; }
+  .flag { font-size: 1.15rem; }
+
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Customizable <span class="grad">select</span></h1>
+  <p class="lead">Style the real select, keep the native accessibility. Chapter 19 of Modern CSS 2026.</p>
+  <span class="badge">CHROME ONLY 135+</span>
+  <p class="hint">Where customizable select is supported you get the styled picker.
+    Elsewhere it falls back to a native select that still works.</p>
+
+  <div class="cols">
+    <div>
+      <label for="plan">Choose a plan</label>
+      <select id="plan">
+        <button><selectedcontent></selectedcontent></button>
+        <option value="free">Free</option>
+        <option value="pro">Pro</option>
+        <option value="team">Team</option>
+        <option value="ent">Enterprise</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="country">Country</label>
+      <select id="country">
+        <button><selectedcontent></selectedcontent></button>
+        <option value="es"><span class="flag">&#127466;&#127480;</span> Spain</option>
+        <option value="mx"><span class="flag">&#127474;&#127485;</span> Mexico</option>
+        <option value="gb"><span class="flag">&#127468;&#127463;</span> United Kingdom</option>
+        <option value="jp"><span class="flag">&#127471;&#127477;</span> Japan</option>
+      </select>
+    </div>
+  </div>
+
+  <footer>
+    Part of <a href="../../">Modern CSS 2026 live demos</a>. Verify the support
+    state at <a href="https://baseline.web.dev">baseline.web.dev</a>.
+  </footer>
+</div>
+</body>
+</html>
