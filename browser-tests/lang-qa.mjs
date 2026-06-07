@@ -67,6 +67,9 @@ const EN_TELLS = [
   // ch17
   "without Framer Motion", "Tap a tile", "Back to grid",
   "grows into the detail", "shared-element view transition",
+  // ch18
+  "place themselves, no Floating UI", "Badge anchored to a corner",
+  "Popover, zero JavaScript", "Account menu", "flips above",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -123,6 +126,9 @@ const ES_TELLS = [
   // cap17
   "sin Framer Motion", "Toca un recuadro", "Volver a la galería",
   "crece hasta el detalle", "de elemento compartido",
+  // cap18
+  "se colocan solos, sin Floating UI", "Badge anclado a una esquina",
+  "Popover, cero JavaScript", "Menú de cuenta", "Se voltea arriba",
 ];
 
 function walk(dir) {

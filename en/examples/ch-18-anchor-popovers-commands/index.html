@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch 18 · Anchor, Popovers, Commands · Modern CSS 2026</title>
+<meta name="description" content="A badge anchored to a card corner and a popover anchored to a button that flips if there is no room, no Floating UI. Demo for Chapter 18 of Modern CSS 2026.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --brand: oklch(48% 0.18 295);
+    --accent: oklch(72% 0.15 210);
+    --ink: light-dark(oklch(22% 0.02 290), oklch(95% 0.01 290));
+    --bg: light-dark(oklch(98% 0.01 290), oklch(18% 0.02 290));
+    --card: light-dark(oklch(100% 0 0), oklch(24% 0.02 290));
+    --line: light-dark(oklch(90% 0.01 290), oklch(36% 0.02 290));
+    --muted: light-dark(oklch(45% 0.02 290), oklch(72% 0.02 290));
+    --tint: color-mix(in oklch, var(--accent) 16%, var(--card));
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 52rem; margin-inline: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.3rem; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); margin-top: 0; }
+  .badge-label {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; padding: 0.15rem 0.55rem; border-radius: 999px;
+    border: 1px solid oklch(52% 0.13 165); color: oklch(52% 0.13 165);
+    margin-bottom: 1.4rem;
+  }
+  h2 { font-size: 1rem; margin: 1.6rem 0 0.3rem; }
+  .hint { font-size: 0.8rem; color: var(--muted); margin: 0 0 1rem; }
+
+  /* Anchor a badge to the card corner with anchor(). */
+  .cardwrap { position: relative; width: fit-content; }
+  .card {
+    anchor-name: --card1;
+    width: 16rem; padding: 1.4rem;
+    border: 1px solid var(--line); border-radius: 1rem;
+    background: var(--card);
+  }
+  .card h3 { margin: 0 0 0.2rem; }
+  .card p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+  .badge {
+    position: absolute;
+    left: anchor(--card1 right);
+    top: anchor(--card1 top);
+    translate: -50% -50%;
+    background: var(--brand); color: white;
+    font-size: 0.75rem; font-weight: 700;
+    min-width: 1.5rem; height: 1.5rem;
+    display: grid; place-items: center;
+    border-radius: 999px; padding-inline: 0.4rem;
+    border: 2px solid var(--bg);
+  }
+
+  /* Popover anchored to its button, flips if there is no room. */
+  .btn {
+    anchor-name: --btn1;
+    cursor: pointer; font: inherit; font-weight: 650;
+    background: var(--brand); color: white; border: 0;
+    border-radius: 0.6rem; padding: 0.6rem 1rem;
+  }
+  .pop {
+    position-anchor: --btn1;
+    inset: auto;
+    position-area: bottom span-right;
+    margin-top: 0.5rem;
+    position-try-fallbacks: top span-right;
+    width: 13rem; margin-inline: 0;
+    border: 1px solid var(--line); border-radius: 0.8rem;
+    background: var(--card); padding: 0.5rem;
+    box-shadow: 0 12px 28px #0002;
+  }
+  .pop ul { list-style: none; margin: 0; padding: 0; }
+  .pop li { padding: 0.5rem 0.7rem; border-radius: 0.4rem; }
+  .pop li:hover { background: var(--tint); }
+
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Anchor, popovers &amp; <span class="grad">commands</span></h1>
+  <p class="lead">Tooltips and menus that place themselves, no Floating UI. Chapter 18 of Modern CSS 2026.</p>
+  <span class="badge-label">BASELINE 2025/2026</span>
+
+  <h2>Badge anchored to a corner</h2>
+  <p class="hint">The number is pinned to the card's top-right corner with anchor(). No measuring.</p>
+  <div class="cardwrap">
+    <div class="card">
+      <h3>Inbox</h3>
+      <p>The badge stays on the corner at any size.</p>
+    </div>
+    <span class="badge">3</span>
+  </div>
+
+  <h2>Popover, zero JavaScript</h2>
+  <p class="hint">The button opens a popover anchored below it. It flips above if there is no room.</p>
+  <button class="btn" popovertarget="pop">Account menu</button>
+  <div id="pop" popover class="pop">
+    <ul>
+      <li>Profile</li>
+      <li>Settings</li>
+      <li>Sign out</li>
+    </ul>
+  </div>
+
+  <footer>
+    Part of <a href="../../">Modern CSS 2026 live demos</a>. Verify the support
+    state at <a href="https://baseline.web.dev">baseline.web.dev</a>.
+  </footer>
+</div>
+</body>
+</html>
