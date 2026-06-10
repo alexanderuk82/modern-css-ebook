@@ -76,6 +76,9 @@ const EN_TELLS = [
   // ch20
   "no intermediate variables", "Grid columns from an attribute",
   "Chip color from an attribute", "Pass data from HTML",
+  // ch21
+  "Inline conditional logic", "Theme from a variable",
+  "Chained if()", "the else branch wins", "All good",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -141,6 +144,9 @@ const ES_TELLS = [
   // cap20
   "sin variables intermedias", "Columnas de grid desde un atributo",
   "Color del chip desde un atributo", "Pasa datos del HTML",
+  // cap21
+  "Lógica condicional inline", "Tema desde una variable",
+  "if() encadenado", "gana la rama else", "Todo bien",
 ];
 
 function walk(dir) {

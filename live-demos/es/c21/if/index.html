@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap 21 · La función if() · CSS Moderno 2026</title>
+<meta name="description" content="Lógica condicional inline en CSS: una tarjeta con tema desde if(style()) y badges de estado con if() encadenado. Demo del capítulo 21 de CSS Moderno 2026.">
+<style>
+  :root {
+    --brand: oklch(48% 0.18 295);
+    --accent: oklch(72% 0.15 210);
+    --green: oklch(62% 0.16 150);
+    --amber: oklch(72% 0.16 70);
+    --red: oklch(62% 0.2 25);
+    --ink: oklch(22% 0.02 290);
+    --bg: oklch(98% 0.01 290);
+    --card: oklch(100% 0 0);
+    --line: oklch(90% 0.01 290);
+    --muted: oklch(45% 0.02 290);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 52rem; margin-inline: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.3rem; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); margin-top: 0; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; padding: 0.15rem 0.55rem; border-radius: 999px;
+    border: 1px solid oklch(60% 0.15 70); color: oklch(60% 0.15 70);
+    margin-bottom: 1.4rem;
+  }
+  h2 { font-size: 1rem; margin: 1.6rem 0 0.3rem; }
+  .hint { font-size: 0.8rem; color: var(--muted); margin: 0 0 0.8rem; }
+
+  /* Demo 1: un solo CSS de tarjeta, el tema lo elige if(style(--tema)). */
+  .themes { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+  .themed {
+    border-radius: 0.8rem; padding: 1.2rem;
+    background: if(
+      style(--tema: dark): oklch(20% 0.02 290);
+      else: white
+    );
+    color: if(
+      style(--tema: dark): oklch(95% 0.01 290);
+      else: oklch(22% 0.02 290)
+    );
+    border: 1px solid if(
+      style(--tema: dark): oklch(40% 0.02 290);
+      else: oklch(88% 0.01 290)
+    );
+  }
+  .light { --tema: light; }
+  .dark { --tema: dark; }
+  .themed .tag {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    padding: 0.15rem 0.5rem; border-radius: 999px;
+    background: var(--brand); color: white;
+  }
+
+  /* Demo 2: un if() encadenado, como if / else if / else. */
+  .stati { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .pill {
+    color: white; font-weight: 650; font-size: 0.85rem;
+    padding: 0.45rem 0.9rem; border-radius: 999px;
+    background: if(
+      style(--estado: error): var(--red);
+      style(--estado: warn): var(--amber);
+      else: var(--green)
+    );
+  }
+  .ok { --estado: ok; }
+  .warn { --estado: warn; }
+  .err { --estado: error; }
+
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>La función <span class="grad">if()</span></h1>
+  <p class="lead">Lógica condicional inline, dentro de una propiedad. Capítulo 21 de CSS Moderno 2026.</p>
+  <span class="badge">CHROME ONLY 137+</span>
+
+  <h2>Tema desde una variable</h2>
+  <p class="hint">Un solo CSS de tarjeta. Los colores son <code>if(style(--tema: dark): ...; else: ...)</code>.</p>
+  <div class="themes">
+    <div class="themed light">
+      <span class="tag">Claro</span>
+      <p style="margin:0.6rem 0 0">--tema es claro, así que gana la rama else.</p>
+    </div>
+    <div class="themed dark">
+      <span class="tag">Oscuro</span>
+      <p style="margin:0.6rem 0 0">--tema es oscuro, así que gana la primera rama.</p>
+    </div>
+  </div>
+
+  <h2>if() encadenado, como if / else if / else</h2>
+  <p class="hint">El color de cada pastilla sale de su <code>--estado</code> con un if() encadenado.</p>
+  <div class="stati">
+    <span class="pill ok">Todo bien</span>
+    <span class="pill warn">Aviso</span>
+    <span class="pill err">Error</span>
+  </div>
+
+  <footer>
+    Parte de las <a href="../../">demos de CSS Moderno 2026</a>. Verifica el
+    estado de soporte en <a href="https://baseline.web.dev">baseline.web.dev</a>.
+  </footer>
+</div>
+</body>
+</html>
