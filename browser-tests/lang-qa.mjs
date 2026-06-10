@@ -82,6 +82,9 @@ const EN_TELLS = [
   // ch22
   "Your own CSS functions", "A spacing scale from one function",
   "Color steps from", "One base color, darkened",
+  // ch23
+  "Reusable blocks of declarations", "Elevation levels",
+  "Responsive grid", "results a mixin packages", "Level 1",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -153,6 +156,9 @@ const ES_TELLS = [
   // cap22
   "Tus propias funciones de CSS", "Una escala de espaciado desde una función",
   "Pasos de color desde", "Un color base, oscurecido",
+  // cap23
+  "Bloques de declaraciones reutilizables", "Niveles de elevación",
+  "Rejilla responsive", "el resultado que empaqueta un mixin", "Nivel 1",
 ];
 
 function walk(dir) {
