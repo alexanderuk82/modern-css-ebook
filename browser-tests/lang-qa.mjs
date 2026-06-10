@@ -79,6 +79,9 @@ const EN_TELLS = [
   // ch21
   "Inline conditional logic", "Theme from a variable",
   "Chained if()", "the else branch wins", "All good",
+  // ch22
+  "Your own CSS functions", "A spacing scale from one function",
+  "Color steps from", "One base color, darkened",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -147,6 +150,9 @@ const ES_TELLS = [
   // cap21
   "Lógica condicional inline", "Tema desde una variable",
   "if() encadenado", "gana la rama else", "Todo bien",
+  // cap22
+  "Tus propias funciones de CSS", "Una escala de espaciado desde una función",
+  "Pasos de color desde", "Un color base, oscurecido",
 ];
 
 function walk(dir) {
