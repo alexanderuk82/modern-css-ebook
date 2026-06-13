@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch 28 · The Future · Modern CSS 2026</title>
+<meta name="description" content="A roadmap of what is coming to CSS, from now to 2027, to close the book looking forward. Demo for Chapter 28 of Modern CSS 2026.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --brand: oklch(48% 0.18 295);
+    --accent: oklch(72% 0.15 210);
+    --now: oklch(58% 0.15 150);
+    --soon: oklch(72% 0.16 70);
+    --horizon: oklch(60% 0.2 295);
+    --ink: light-dark(oklch(22% 0.02 290), oklch(95% 0.01 290));
+    --bg: light-dark(oklch(98% 0.01 290), oklch(18% 0.02 290));
+    --card: light-dark(oklch(100% 0 0), oklch(24% 0.02 290));
+    --line: light-dark(oklch(90% 0.01 290), oklch(36% 0.02 290));
+    --muted: light-dark(oklch(45% 0.02 290), oklch(72% 0.02 290));
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 46rem; margin-inline: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.3rem; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); margin-top: 0; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; padding: 0.15rem 0.55rem; border-radius: 999px;
+    border: 1px solid var(--muted); color: var(--muted);
+    margin-bottom: 1.6rem;
+  }
+  .road { display: grid; gap: 0; }
+  .mile {
+    border-inline-start: 3px solid var(--line);
+    padding: 0 0 1.5rem 1.3rem; margin-inline-start: 0.5rem;
+    position: relative;
+  }
+  .mile::before {
+    content: ""; position: absolute;
+    inset-inline-start: -0.6rem; top: 0.1rem;
+    width: 0.9rem; height: 0.9rem; border-radius: 50%;
+    background: var(--dot); border: 2px solid var(--bg);
+  }
+  .when {
+    font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em;
+    color: var(--dot); text-transform: uppercase;
+  }
+  .mile h3 { margin: 0.1rem 0 0.4rem; font-size: 1.05rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    font-size: 0.78rem; font-weight: 600;
+    padding: 0.25rem 0.6rem; border-radius: 999px;
+    background: color-mix(in oklch, var(--dot) 16%, var(--card));
+    border: 1px solid color-mix(in oklch, var(--dot) 40%, var(--line));
+  }
+  .now { --dot: var(--now); }
+  .soon { --dot: var(--soon); }
+  .horizon { --dot: var(--horizon); }
+
+  footer { margin-top: 1.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The <span class="grad">future</span></h1>
+  <p class="lead">Where CSS keeps moving, from now to 2027. Chapter 28 of Modern CSS 2026.</p>
+  <span class="badge">THE ROAD AHEAD</span>
+
+  <div class="road">
+    <div class="mile now">
+      <span class="when">You are here · 2026</span>
+      <h3>Baseline today</h3>
+      <div class="tags">
+        <span class="tag">:has()</span><span class="tag">container queries</span>
+        <span class="tag">subgrid</span><span class="tag">OKLCH</span>
+        <span class="tag">view transitions</span><span class="tag">scroll-driven</span>
+      </div>
+    </div>
+    <div class="mile soon">
+      <span class="when">About to cross · soon</span>
+      <h3>On the Baseline ramp</h3>
+      <div class="tags">
+        <span class="tag">masonry</span><span class="tag">cross-document VT</span>
+        <span class="tag">if()</span><span class="tag">@function</span>
+        <span class="tag">contrast-color()</span>
+      </div>
+    </div>
+    <div class="mile horizon">
+      <span class="when">On the horizon · 2027+</span>
+      <h3>Cooking at the W3C</h3>
+      <div class="tags">
+        <span class="tag">@mixin</span><span class="tag">Custom Highlight API</span>
+        <span class="tag">advanced attr()</span><span class="tag">AI + CSS tooling</span>
+        <span class="tag">MCP design tokens</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Part of <a href="../../">Modern CSS 2026 live demos</a>. The book is paper, the CSS
+    is alive. Go build something good.
+  </footer>
+</div>
+</body>
+</html>

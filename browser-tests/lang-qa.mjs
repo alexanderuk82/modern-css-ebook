@@ -97,6 +97,9 @@ const EN_TELLS = [
   // ch27
   "Detect before you use", "Build the base first",
   "your browser, right now", "not supported", "Production with",
+  // ch28
+  "Where CSS keeps moving", "You are here", "On the Baseline ramp",
+  "Cooking at the W3C", "Go build something good",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -183,6 +186,9 @@ const ES_TELLS = [
   // cap27
   "Detecta antes de usar", "Construye la base primero",
   "tu navegador, ahora mismo", "no soportado", "Producción con",
+  // cap28
+  "Hacia dónde sigue CSS", "Estás aquí", "En la rampa a Baseline",
+  "Cociéndose en el W3C", "construye algo bueno",
 ];
 
 function walk(dir) {
