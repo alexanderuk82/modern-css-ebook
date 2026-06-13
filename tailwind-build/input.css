@@ -1,0 +1,6 @@
+/* Tailwind v4.3 entry. The CLI scans the demo HTML files declared below and
+   emits only the utilities they actually use, into the demo folders' tw.css. */
+@import "tailwindcss";
+
+@source "../live-demos/en/c24/tailwind/index.html";
+@source "../live-demos/es/c24/tailwind/index.html";

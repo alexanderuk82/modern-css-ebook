@@ -1,0 +1,12 @@
+{
+  "name": "modern-css-ebook-tailwind-build",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Compiles real Tailwind v4.3 output for the Part VIII demos. The compiled tw.css files are committed into the demo folders.",
+  "scripts": {
+    "build:c24": "tailwindcss -i input.css -o ../live-demos/en/c24/tailwind/tw.css --minify && tailwindcss -i input.css -o ../live-demos/es/c24/tailwind/tw.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.1"
+  }
+}

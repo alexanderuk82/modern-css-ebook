@@ -85,6 +85,9 @@ const EN_TELLS = [
   // ch23
   "Reusable blocks of declarations", "Elevation levels",
   "Responsive grid", "results a mixin packages", "Level 1",
+  // ch24
+  "Why Tailwind exists", "four ways, all rendering the same",
+  "Utilities composed in the HTML", "real compiled Tailwind", ">Save<",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -159,6 +162,9 @@ const ES_TELLS = [
   // cap23
   "Bloques de declaraciones reutilizables", "Niveles de elevación",
   "Rejilla responsive", "el resultado que empaqueta un mixin", "Nivel 1",
+  // cap24
+  "Por qué existe Tailwind", "cuatro formas, todos renderizando igual",
+  "Utilidades compuestas en el HTML", "salida real de Tailwind", ">Guardar<",
 ];
 
 function walk(dir) {
