@@ -94,6 +94,9 @@ const EN_TELLS = [
   // ch26
   "No answer, criteria", "design system to publish for others",
   "Keep Tailwind", "pick by team", "shipping fast",
+  // ch27
+  "Detect before you use", "Build the base first",
+  "your browser, right now", "not supported", "Production with",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -177,6 +180,9 @@ const ES_TELLS = [
   // cap26
   "Sin respuesta, con criterio", "design system para publicar a otros",
   "Sigue con Tailwind", "elige por equipo", "yendo rápido",
+  // cap27
+  "Detecta antes de usar", "Construye la base primero",
+  "tu navegador, ahora mismo", "no soportado", "Producción con",
 ];
 
 function walk(dir) {

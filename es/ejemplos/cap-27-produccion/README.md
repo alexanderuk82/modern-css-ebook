@@ -1,7 +1,16 @@
-# Ejemplos del capitulo 27 · Produccion real
+# Ejemplos del capitulo 27 · Producción real
 
-> Etiqueta de soporte: **N/A**
+> Etiqueta de soporte: **N/A** (práctica de producción, no una feature suelta)
 
-Las demos ejecutables de este capitulo van llegando aqui segun se escribe el libro. Cada demo corresponde a un QR del libro impreso y a una pagina viva en [`/live-demos`](../../../live-demos/).
+## Detección de features con @supports en CSS puro
 
-Abre cualquier `index.html` directo en un navegador moderno. Sin paso de build salvo que una carpeta diga lo contrario.
+El `index.html` es un panel de soporte en vivo: cada fila la decide un `@supports`
+en CSS puro (sin JavaScript), así que muestra qué soporta tu navegador ahora mismo
+para `:has()`, container queries, `oklch()`, anchor positioning, scroll-driven
+animations e `if()`.
+
+Es el corazón del progressive enhancement: construye la base primero, y luego
+mejora lo que `@supports` permita.
+
+**Ábrela:** el `index.html` de esta carpeta, o en vivo en
+https://alexanderuk82.github.io/modern-css-ebook/es/c27/production/

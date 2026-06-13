@@ -1,7 +1,16 @@
 # Chapter 27 examples · Production
 
-> Support label: **N/A**
+> Support label: **N/A** (production practice, not a single feature)
 
-Runnable demos for this chapter land here as the book is written. Each demo maps to a QR code in the printed book and to a live page under [`/live-demos`](../../../live-demos/).
+## Pure-CSS @supports feature detection
 
-Open any `index.html` straight in a modern browser. No build step unless a folder says otherwise.
+`index.html` is a live support panel: each row is decided by a pure CSS
+`@supports` query (no JavaScript), so it shows what your browser supports right
+now for `:has()`, container queries, `oklch()`, anchor positioning, scroll-driven
+animations and `if()`.
+
+It is the heart of progressive enhancement: build the base first, then enhance
+what `@supports` allows.
+
+**Open it:** `index.html` in this folder, or live at
+https://alexanderuk82.github.io/modern-css-ebook/en/c27/production/

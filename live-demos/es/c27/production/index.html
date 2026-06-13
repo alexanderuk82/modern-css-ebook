@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap 27 · Producción · CSS Moderno 2026</title>
+<meta name="description" content="Un panel de soporte construido con @supports en CSS puro: detecta, sin JavaScript, qué features del libro soporta tu navegador ahora mismo. Demo del capítulo 27 de CSS Moderno 2026.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --brand: oklch(48% 0.18 295);
+    --accent: oklch(72% 0.15 210);
+    --yes: oklch(58% 0.15 150);
+    --no: oklch(62% 0.16 25);
+    --ink: light-dark(oklch(22% 0.02 290), oklch(95% 0.01 290));
+    --bg: light-dark(oklch(98% 0.01 290), oklch(18% 0.02 290));
+    --card: light-dark(oklch(100% 0 0), oklch(24% 0.02 290));
+    --line: light-dark(oklch(90% 0.01 290), oklch(36% 0.02 290));
+    --muted: light-dark(oklch(45% 0.02 290), oklch(72% 0.02 290));
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 46rem; margin-inline: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.3rem; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); margin-top: 0; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; padding: 0.15rem 0.55rem; border-radius: 999px;
+    border: 1px solid var(--muted); color: var(--muted);
+    margin-bottom: 1.4rem;
+  }
+  .hint { font-size: 0.8rem; color: var(--muted); margin: 0 0 1rem; }
+
+  .panel { display: grid; gap: 0.5rem; }
+  .feat {
+    display: flex; align-items: center; justify-content: space-between;
+    border: 1px solid var(--line);
+    border-inline-start: 4px solid var(--no);
+    border-radius: 0.6rem; padding: 0.7rem 1rem;
+    background: var(--card); font-weight: 600;
+  }
+  .feat code { font-family: ui-monospace, monospace; font-size: 0.9em; font-weight: 400; }
+  .state { font-size: 0.85rem; font-weight: 700; color: var(--no); }
+  .state::after { content: "no soportado"; }
+
+  /* Detección de features en CSS puro: cada @supports pone una fila en "soportado". */
+  @supports selector(:has(*)) {
+    .f-has { border-inline-start-color: var(--yes); }
+    .f-has .state { color: var(--yes); }
+    .f-has .state::after { content: "soportado"; }
+  }
+  @supports (container-type: inline-size) {
+    .f-cq { border-inline-start-color: var(--yes); }
+    .f-cq .state { color: var(--yes); }
+    .f-cq .state::after { content: "soportado"; }
+  }
+  @supports (color: oklch(0 0 0)) {
+    .f-oklch { border-inline-start-color: var(--yes); }
+    .f-oklch .state { color: var(--yes); }
+    .f-oklch .state::after { content: "soportado"; }
+  }
+  @supports (anchor-name: --a) {
+    .f-anchor { border-inline-start-color: var(--yes); }
+    .f-anchor .state { color: var(--yes); }
+    .f-anchor .state::after { content: "soportado"; }
+  }
+  @supports (animation-timeline: scroll()) {
+    .f-scroll { border-inline-start-color: var(--yes); }
+    .f-scroll .state { color: var(--yes); }
+    .f-scroll .state::after { content: "soportado"; }
+  }
+  @supports (color: if(style(--x: a): red; else: blue)) {
+    .f-if { border-inline-start-color: var(--yes); }
+    .f-if .state { color: var(--yes); }
+    .f-if .state::after { content: "soportado"; }
+  }
+
+  footer { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Producción con <span class="grad">@supports</span></h1>
+  <p class="lead">Detecta antes de usar, sin JavaScript. Capítulo 27 de CSS Moderno 2026.</p>
+  <span class="badge">PROGRESSIVE ENHANCEMENT</span>
+  <p class="hint">Cada fila de abajo la decide un <code>@supports</code> en CSS puro. Este es tu navegador, ahora mismo.</p>
+
+  <div class="panel">
+    <div class="feat f-has"><code>:has()</code><span class="state"></span></div>
+    <div class="feat f-cq"><code>container queries</code><span class="state"></span></div>
+    <div class="feat f-oklch"><code>oklch()</code><span class="state"></span></div>
+    <div class="feat f-anchor"><code>anchor positioning</code><span class="state"></span></div>
+    <div class="feat f-scroll"><code>scroll-driven animations</code><span class="state"></span></div>
+    <div class="feat f-if"><code>if()</code><span class="state"></span></div>
+  </div>
+
+  <footer>
+    Parte de las <a href="../../">demos de CSS Moderno 2026</a>. Construye la base
+    primero, y luego mejora lo que <code>@supports</code> permita.
+  </footer>
+</div>
+</body>
+</html>
