@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap 26 · CSS nativo vs Tailwind · CSS Moderno 2026</title>
+<meta name="description" content="Un árbol de decisión para elegir entre CSS nativo moderno y Tailwind según tu equipo, proyecto y momento. Demo del capítulo 26 de CSS Moderno 2026.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --brand: oklch(48% 0.18 295);
+    --accent: oklch(72% 0.15 210);
+    --tw: oklch(49% 0.27 293);
+    --native: oklch(58% 0.16 200);
+    --either: oklch(60% 0.02 290);
+    --ink: light-dark(oklch(22% 0.02 290), oklch(95% 0.01 290));
+    --bg: light-dark(oklch(98% 0.01 290), oklch(18% 0.02 290));
+    --card: light-dark(oklch(100% 0 0), oklch(24% 0.02 290));
+    --line: light-dark(oklch(90% 0.01 290), oklch(36% 0.02 290));
+    --muted: light-dark(oklch(45% 0.02 290), oklch(72% 0.02 290));
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 48rem; margin-inline: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.3rem; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--native), var(--tw));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); margin-top: 0; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; padding: 0.15rem 0.55rem; border-radius: 999px;
+    border: 1px solid var(--muted); color: var(--muted);
+    margin-bottom: 1.6rem;
+  }
+  .tree { display: grid; gap: 0; }
+  .step {
+    border-inline-start: 3px solid var(--line);
+    padding: 0 0 1.4rem 1.2rem; margin-inline-start: 0.5rem;
+    position: relative;
+  }
+  .step::before {
+    content: ""; position: absolute;
+    inset-inline-start: -0.55rem; top: 0.1rem;
+    width: 0.8rem; height: 0.8rem; border-radius: 50%;
+    background: var(--brand);
+  }
+  .q { font-weight: 700; margin: 0 0 0.6rem; }
+  .branches { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .out {
+    font-size: 0.82rem; font-weight: 650;
+    padding: 0.4rem 0.8rem; border-radius: 0.6rem;
+    color: white;
+  }
+  .out small { display: block; font-weight: 400; opacity: 0.9; font-size: 0.75rem; }
+  .native { background: var(--native); }
+  .tw { background: var(--tw); }
+  .either { background: var(--either); }
+  .next {
+    font-size: 0.82rem; color: var(--muted);
+    padding: 0.4rem 0.8rem; border: 1px dashed var(--line);
+    border-radius: 0.6rem;
+  }
+
+  footer { margin-top: 1.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>CSS nativo <span class="grad">vs Tailwind</span></h1>
+  <p class="lead">Sin respuesta, con criterio. Sigue el árbol para tu caso. Capítulo 26 de CSS Moderno 2026.</p>
+  <span class="badge">LA DECISIÓN HONESTA</span>
+
+  <div class="tree">
+    <div class="step">
+      <p class="q">1. ¿Construyes un design system para publicar a otros?</p>
+      <div class="branches">
+        <span class="out native">Sí → CSS nativo<small>API semántica, sin Tailwind filtrándose fuera</small></span>
+        <span class="next">No → siguiente pregunta</span>
+      </div>
+    </div>
+    <div class="step">
+      <p class="q">2. ¿Equipo grande ya en Tailwind, yendo rápido?</p>
+      <div class="branches">
+        <span class="out tw">Sí → Sigue con Tailwind<small>migrar por moda rara vez compensa</small></span>
+        <span class="next">No → siguiente pregunta</span>
+      </div>
+    </div>
+    <div class="step">
+      <p class="q">3. ¿Proyecto pequeño o mediano, y conoces el CSS moderno?</p>
+      <div class="branches">
+        <span class="out native">Sí → CSS nativo<small>capas, scope, container queries, sin build</small></span>
+        <span class="out either">No → Cualquiera, elige por equipo<small>gana quien mejor conozca la herramienta</small></span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Parte de las <a href="../../">demos de CSS Moderno 2026</a>. Elige por el contexto, no
+    por el bando, y revísalo cada par de años.
+  </footer>
+</div>
+</body>
+</html>

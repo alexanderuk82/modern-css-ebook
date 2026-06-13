@@ -91,6 +91,9 @@ const EN_TELLS = [
   // ch25
   "become utilities", "Container queries, built in",
   "Wide container", "Narrow container", "one column",
+  // ch26
+  "No answer, criteria", "design system to publish for others",
+  "Keep Tailwind", "pick by team", "shipping fast",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -171,6 +174,9 @@ const ES_TELLS = [
   // cap25
   "se vuelven utilidades", "Container queries, de serie",
   "Contenedor ancho", "Contenedor estrecho", "una columna",
+  // cap26
+  "Sin respuesta, con criterio", "design system para publicar a otros",
+  "Sigue con Tailwind", "elige por equipo", "yendo rápido",
 ];
 
 function walk(dir) {
