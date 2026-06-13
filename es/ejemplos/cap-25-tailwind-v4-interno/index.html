@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap 25 · Tailwind v4.3 por dentro · CSS Moderno 2026</title>
+<meta name="description" content="Tokens propios de @theme compilados en utilidades y las container queries de serie de Tailwind, todo desde Tailwind v4.3 compilado de verdad. Demo del capítulo 25 de CSS Moderno 2026.">
+<!-- Salida real de Tailwind v4.3, compilada desde un @theme propio. -->
+<link rel="stylesheet" href="./tw.css">
+<style>
+  :root {
+    color-scheme: light dark;
+    --brand: oklch(48% 0.18 295);
+    --accent: oklch(72% 0.15 210);
+    --ink: light-dark(oklch(22% 0.02 290), oklch(95% 0.01 290));
+    --bg: light-dark(oklch(98% 0.01 290), oklch(18% 0.02 290));
+    --card: light-dark(oklch(100% 0 0), oklch(24% 0.02 290));
+    --line: light-dark(oklch(90% 0.01 290), oklch(36% 0.02 290));
+    --muted: light-dark(oklch(45% 0.02 290), oklch(72% 0.02 290));
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 52rem; margin-inline: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+  a { color: var(--accent); }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 0.3rem; letter-spacing: -0.02em; }
+  h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lead { color: var(--muted); margin-top: 0; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; padding: 0.15rem 0.55rem; border-radius: 999px;
+    border: 1px solid var(--brand); color: var(--brand);
+    margin-bottom: 1.4rem;
+  }
+  h2 { font-size: 1rem; margin: 1.6rem 0 0.3rem; }
+  .hint { font-size: 0.8rem; color: var(--muted); margin: 0 0 0.8rem; }
+  pre {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 0.6rem; padding: 0.9rem 1rem; overflow-x: auto;
+    font-family: ui-monospace, "Cascadia Code", monospace;
+    font-size: 0.78rem; margin: 0 0 1rem;
+  }
+  .narrow { max-width: 17rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Tailwind v4.3 <span class="grad">por dentro</span></h1>
+  <p class="lead">Config CSS-first, defaults OKLCH, container queries de serie. Capítulo 25 de CSS Moderno 2026.</p>
+  <span class="badge">TAILWIND v4.3</span>
+
+  <h2>Los tokens de @theme se vuelven utilidades</h2>
+  <p class="hint">Estas cajas usan <code>bg-brand</code>, <code>bg-accent</code> y <code>rounded-card</code>, definidos en el @theme de abajo.</p>
+  <pre>@theme {
+  --color-brand: oklch(48% 0.18 295);
+  --color-accent: oklch(72% 0.15 210);
+  --radius-card: 0.9rem;
+}</pre>
+  <div class="flex gap-3">
+    <div class="bg-brand rounded-card text-white font-semibold p-4">bg-brand</div>
+    <div class="bg-accent rounded-card text-white font-semibold p-4">bg-accent</div>
+  </div>
+
+  <h2>Container queries, de serie</h2>
+  <p class="hint">Una rejilla con <code>@sm:grid-cols-2</code> dentro de un <code>@container</code>. Dos columnas cuando el contenedor es ancho, una cuando es estrecho.</p>
+  <div class="@container">
+    <div class="grid gap-2 @sm:grid-cols-2">
+      <div class="bg-brand/15 rounded-lg p-3 font-semibold">Contenedor ancho</div>
+      <div class="bg-brand/15 rounded-lg p-3 font-semibold">dos columnas</div>
+    </div>
+  </div>
+  <div class="narrow @container" style="margin-top:0.8rem">
+    <div class="grid gap-2 @sm:grid-cols-2">
+      <div class="bg-accent/15 rounded-lg p-3 font-semibold">Contenedor estrecho</div>
+      <div class="bg-accent/15 rounded-lg p-3 font-semibold">una columna</div>
+    </div>
+  </div>
+
+  <footer style="margin-top:2.5rem;color:var(--muted);font-size:0.85rem;border-top:1px solid var(--line);padding-top:1.2rem">
+    Parte de las <a href="../../">demos de CSS Moderno 2026</a>. Las cajas estilizadas usan Tailwind v4.3 compilado de verdad (tw.css) desde un @theme propio.
+  </footer>
+</div>
+</body>
+</html>

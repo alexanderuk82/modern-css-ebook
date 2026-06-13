@@ -1,0 +1,12 @@
+/* Tailwind v4.3 entry for Chapter 25: a CSS-first @theme config. The tokens
+   below become utilities (bg-brand, text-accent, rounded-card, ...). */
+@import "tailwindcss";
+
+@theme {
+  --color-brand: oklch(48% 0.18 295);
+  --color-accent: oklch(72% 0.15 210);
+  --radius-card: 0.9rem;
+}
+
+@source "../live-demos/en/c25/internals/index.html";
+@source "../live-demos/es/c25/internals/index.html";

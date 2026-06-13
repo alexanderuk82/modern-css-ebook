@@ -88,6 +88,9 @@ const EN_TELLS = [
   // ch24
   "Why Tailwind exists", "four ways, all rendering the same",
   "Utilities composed in the HTML", "real compiled Tailwind", ">Save<",
+  // ch25
+  "become utilities", "Container queries, built in",
+  "Wide container", "Narrow container", "one column",
 ];
 // Words that should only ever appear in a Spanish demo.
 const ES_TELLS = [
@@ -165,6 +168,9 @@ const ES_TELLS = [
   // cap24
   "Por qué existe Tailwind", "cuatro formas, todos renderizando igual",
   "Utilidades compuestas en el HTML", "salida real de Tailwind", ">Guardar<",
+  // cap25
+  "se vuelven utilidades", "Container queries, de serie",
+  "Contenedor ancho", "Contenedor estrecho", "una columna",
 ];
 
 function walk(dir) {
