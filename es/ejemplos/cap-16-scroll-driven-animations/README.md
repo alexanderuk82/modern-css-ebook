@@ -1,6 +1,6 @@
 # Ejemplos del capitulo 16 · Scroll-driven animations
 
-> Etiqueta de soporte: **BASELINE 2026**
+> Etiqueta de soporte: **CHROME ONLY**
 
 ## Ligadas al scroll, no al reloj
 
@@ -14,5 +14,6 @@ También respeta `prefers-reduced-motion` y apaga el movimiento.
 **Ábrela:** el `index.html` de esta carpeta, o en vivo en
 https://alexanderuk82.github.io/modern-css-ebook/es/c16/scroll/
 
-Las scroll-driven animations son BASELINE 2026 y degradan limpio: donde no hay
-soporte, el contenido se ve en su estado final.
+Las scroll-driven animations son CHROME ONLY por ahora (Chromium y Safari,
+Firefox tras un flag) y degradan limpio: donde no hay soporte, el contenido
+se ve en su estado final.

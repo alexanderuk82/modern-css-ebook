@@ -1,6 +1,6 @@
 # Chapter 16 examples · Scroll-Driven Animations
 
-> Support label: **BASELINE 2026**
+> Support label: **CHROME ONLY**
 
 ## Tied to the scroll, not the clock
 
@@ -14,5 +14,6 @@ It also respects `prefers-reduced-motion` and turns the motion off.
 **Open it:** `index.html` in this folder, or live at
 https://alexanderuk82.github.io/modern-css-ebook/en/c16/scroll/
 
-Scroll-driven animations are BASELINE 2026 and degrade cleanly: where
-unsupported, content just shows in its final state.
+Scroll-driven animations are CHROME ONLY for now (Chromium and Safari,
+Firefox behind a flag) and degrade cleanly: where unsupported, content
+just shows in its final state.

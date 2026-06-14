@@ -1,6 +1,6 @@
 # Chapter 18 examples · Anchor, Popovers, Commands
 
-> Support label: **BASELINE 2025** (Popover API, anchor positioning, commandfor) · newer: interestfor
+> Support label: **mixed** · Popover API BASELINE 2024/2025; anchor positioning and commandfor CHROME ONLY · newer: interestfor
 
 ## Tooltips and menus that place themselves, no Floating UI
 

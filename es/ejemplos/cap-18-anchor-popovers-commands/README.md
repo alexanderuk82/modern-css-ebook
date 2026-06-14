@@ -1,6 +1,6 @@
 # Ejemplos del capitulo 18 · Anchor, popovers e invoker commands
 
-> Etiqueta de soporte: **BASELINE 2025** (Popover API, anchor positioning, commandfor) · más nuevo: interestfor
+> Etiqueta de soporte: **mixta** · Popover API BASELINE 2024/2025; anchor positioning y commandfor CHROME ONLY · más nuevo: interestfor
 
 ## Tooltips y menús que se colocan solos, sin Floating UI
 
